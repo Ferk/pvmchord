@@ -9,7 +9,7 @@
 #include <sys/types.h>
 #include "pvm3.h"
 
-main()
+int main()
 {
     int mytid;                  /* my task id */
     int tids[NPROC];            /* array of task id */
@@ -38,8 +38,9 @@ main()
      /* program finished leave group and exit pvm */
      pvm_lvgroup( "foo" );
      pvm_exit();
-     exit(1);
+     return 0;
 }
+
 
 /* Simple example passes a token around a ring */
 
