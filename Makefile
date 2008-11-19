@@ -9,10 +9,8 @@ PVMLIB= -lpvm3 -lgpvm3
 CC= gcc
 
 
-all:
-	for file in *.c; do
-	make $(echo $file | sed s/".c"//)
-	done
+all: principal
+
 
 %: %.c
 	$(CC) $(CFLAGS) -o $@ $@.c $(PVMLIB)
