@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
 
   if( me == 0 ) {
 
-    info= pvm_spawn("spmd", (char**)0, 0, "", NPROC-1, &tids[1]);
+    info= pvm_spawn("principal", (char**)0, 0, "", NPROC-1, &tids[1]);
 
     if( info != NPROC-1 ) {
 
