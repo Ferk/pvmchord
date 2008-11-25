@@ -17,6 +17,13 @@ all: principal
 	mv $@ $(PVMDIR)
 
 
+# Testing the program
+test: all
+	cd $(PVMDIR) && \
+	./principal 
+
+
+
 # Flymake syntax checking
 check-syntax: 
 	$(CC) -o nul -Wall -S $(CHK_SOURCES)
