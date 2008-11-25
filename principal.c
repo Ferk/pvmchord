@@ -138,6 +138,7 @@ int findnext(int me)
 {
   int next, gnext;
   int info;
+  int longitud,tidReceptor,tag;
 
   struct timeval tmout; /* timeout para la rutina trecv */
   tmout.tv_sec=1; /* indica que trecv esperara 10 segundos */
@@ -152,6 +153,11 @@ int findnext(int me)
     pvm_initsend( PvmDataDefault );
     info = pvm_send( next, PING);
     info = pvm_trecv( next, PONG, &tmout );
+    if(info>0){
+    	pvm_bufinfo(info,&longitud,&tag,&tidReceptor);/*Mira lo que he puesto en el google ese*/
+    	/*Aqui hay que añadir lo de desempaquetar si es que se necesita!*/
+    	printf("Se ha recibido algo!\n");
+    }
   } while(info == TMOUT);
 
   return next;
