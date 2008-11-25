@@ -66,7 +66,7 @@ void dowork( int me, int nproc )
   int token;
 
   int ante, post;
-  int *finger;
+  //int *finger;
 
   int count  = 1;
   int stride = 1;
@@ -77,6 +77,8 @@ void dowork( int me, int nproc )
   post= pvm_gettid("anillo-chord", me+1);
   if( me == 0 )       ante = pvm_gettid("anillo-chord", NPROC-1);
   if( me == NPROC-1 ) post = pvm_gettid("anillo-chord", 0);
+
+  
 
   if( me == 0 ) {
     token = post;
