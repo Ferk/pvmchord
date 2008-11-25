@@ -9,7 +9,7 @@
 #define PING 1
 #define PONG 2
 
-#define TMOUT 25
+#define TMOUT -5
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -116,17 +116,17 @@ void dowork( int me, int nproc )
 
   else {
 
-    /* Espera a la recepción de una petición de token */
+    /* Espera a la recepción de la petición de algun token */
     info = pvm_trecv( -1, PETITION, &tmout );
-    if ( info == 0 ) {
+    if ( info >= 0 ) {
       pvm_upkint( &token, count, stride );
 
-      if(token==me) 
-        pfound(token);
-      else /* Si no tiene el token, transmite la petición por el anillo */
-        ptransmit(token, post);
-      
+      /* si tiene el token, atiende la peticion */
+      /* de lo contrario transmite la petición por el anillo */
+      if( token == me ) pfound(token);
+      else ptransmit(token, post);
     }
+    else printf("timeout! ninguna peticion recibida\n");
   }
 }
 
