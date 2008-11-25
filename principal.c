@@ -6,6 +6,10 @@
 #define NPROC 8
 
 #define PETITION 4
+#define PING 1
+#define PONG 2
+
+#define TMOUT 25
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -18,6 +22,8 @@
 void dowork( int, int );
 void ptransmit(int, int);
 void pfound(int);
+
+int findnext(int);
 
 int main(int argc, char *argv[])
 {
@@ -80,11 +86,17 @@ void dowork( int me, int nproc )
   int count  = 1;
   int stride = 1;
 
+  int info;
+
+  struct timeval tmout; /* timeout para la rutina trecv */
+  tmout.tv_sec=10; /* indica que trecv esperara 10 segundos */
+  tmout.tv_usec=10; /* antes de devolver el mensage "10" */
+
   /* Determinar los nodos vecinos en el anillo */
-  ante= pvm_gettid("anillo-chord", me-1);
-  post= pvm_gettid("anillo-chord", me+1);
-  if( me == 0 )       ante = pvm_gettid("anillo-chord", NPROC-1);
-  if( me == NPROC-1 ) post = pvm_gettid("anillo-chord", 0);
+  // ante= findprev(); pvm_gettid("anillo-chord", me-1);
+  post= findnext(me);
+  // if( me == 0 )       ante = pvm_gettid("anillo-chord", NPROC-1);
+
 
  
   srand(0);
@@ -105,19 +117,45 @@ void dowork( int me, int nproc )
   else {
 
     /* Espera a la recepción de una petición de token */
-    pvm_recv( ante, PETITION );
-    pvm_upkint( &token, count, stride );
+    info = pvm_trecv( -1, PETITION, &tmout );
+    if ( info == 0 ) {
+      pvm_upkint( &token, count, stride );
 
-    if(token==me) {
-      pfound(token);
-    }
-    else {
-      /* Si no tiene el token, transmite la petición por el anillo */
-      ptransmit(token, post);
+      if(token==me) 
+        pfound(token);
+      else /* Si no tiene el token, transmite la petición por el anillo */
+        ptransmit(token, post);
+      
     }
   }
 }
 
+
+/********
+ Devuelve el nodo activo siguiente
+ */
+int findnext(int me)
+{
+  int next, gnext;
+  int info;
+
+  struct timeval tmout; /* timeout para la rutina trecv */
+  tmout.tv_sec=1; /* indica que trecv esperara 10 segundos */
+  tmout.tv_usec=TMOUT; /* antes de devolver el mensage TMOUT */
+  
+  gnext=me;
+  do {
+    gnext++;
+    if( gnext == NPROC ) next = pvm_gettid("anillo-chord", 0);
+    else                 next= pvm_gettid("anillo-chord", gnext);
+    
+    pvm_initsend( PvmDataDefault );
+    info = pvm_send( next, PING);
+    info = pvm_trecv( next, PONG, &tmout );
+  } while(info == TMOUT);
+
+  return next;
+}
 
 
 /******************
