@@ -131,6 +131,26 @@ void dowork( int me, int nproc )
 }
 
 
+/***
+The pseudocode to find the successor node of an id is given below:
+
+ // ask node n to find the successor of id
+ n.find_successor(id)
+   if (id\in(n, successor])
+     return successor;
+   else
+     // forward the query around the circle
+     n0 = closest_preceding_node(id);
+     return n0.find_successor(id);
+ 
+ // search the local table for the highest predecessor of id
+ n.closest_preceding_node(id)
+   for i = m downto 1
+     if (finger[i]\in(n,id))
+       return finger[i];
+   return n;
+***/
+
 /********
  Devuelve el nodo activo siguiente
  */
@@ -185,3 +205,46 @@ void pfound(int token)
 {
   printf("Yo tengo el %d!\n",token);
 }
+
+
+
+/*****
+The pseudocode to stabilize the chord ring/circle after node joins and departures is as follows:
+
+ // create a new Chord ring.
+ n.create()
+   predecessor = nil;
+   successor = n;
+ 
+ // join a Chord ring containing node n'.
+ n.join(n')
+   predecessor = nil;
+   successor = n'.find_successor(n);
+ 
+ // called periodically. verifies n’s immediate
+ // successor, and tells the successor about n.
+ n.stabilize()
+   x = successor.predecessor;
+   if (x\in(n, successor))
+     successor = x;
+   successor.notify(n);
+ 
+ // n' thinks it might be our predecessor.
+ n.notify(n')
+   if (predecessor is nil or n'\in(predecessor, n))
+     predecessor = n';
+ 
+ // called periodically. refreshes finger table entries.
+ // next stores the index of the finger to fix
+ n.fix_fingers()
+   next = next + 1;
+   if (next > m)
+     next = 1;
+   finger[next] = find_successor(n+2next − 1);
+ 
+ // called periodically. checks whether predecessor has failed.
+ n.check_predecessor()
+   if (predecessor has failed)
+     predecessor = nil;
+
+*********/
