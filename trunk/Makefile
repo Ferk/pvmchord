@@ -22,7 +22,7 @@ PVMLIB= -lpvm3 -lgpvm3
 CC= gcc
 
 # Objetivos principales
-all: principal
+all: principal nodo
 
 # Compilación mediante comodines
 %: %.c
