@@ -21,7 +21,6 @@
 #include <sys/types.h>
 #include "pvm3.h"
 
-
 void dowork( int, int );
 void ptransmit(int, int);
 void pfound(int);
@@ -106,6 +105,7 @@ void dowork( int mytid, int mynode )
       pvm_pkint( &predecessor, 1, 1);
       break;
     case PING: /* peticion de disponibilidad */
+      
       break;
     }
     pvm_initsend( PvmDataDefault );
@@ -176,10 +176,10 @@ void dowork( int mytid, int mynode )
     // ask node n to find the successor of id
     n.find_successor(id)
     if (id\in(n, successor])
-    return successor;
-    else
+    return successor;        //Si id está entre n y su sucesor hay que 
+    else                     //devolver sucessor (el sucesor de n)
     // forward the query around the circle
-    n0 = closest_preceding_node(id);
+    n0 = closest_preceding_node(id); //Sino busca el sucesor mas cercano
     return n0.find_successor(id);
 
     // search the local table for the highest predecessor of id
@@ -215,8 +215,8 @@ int findnext(int me)
     info = pvm_send( next, PETITION);
     info = pvm_trecv( next, PING, &tmout );
     if(info>0){
-      pvm_bufinfo(info,&longitud,&tag,&tidReceptor);/*Mira lo que he puesto en el google ese*/
-      /*Aqui hay que añadir lo de desempaquetar si es que se necesita!*/
+      pvm_bufinfo(info,&longitud,&tag,&tidReceptor);/* Saca información del buffer activo*/
+      
       printf("Se ha recibido algo!\n");
     }
   } while(info == 0);
