@@ -84,7 +84,7 @@ int main(int argc, char *argv[])
   /* Programa terminado, salir de pvm */
   /* pvm_lvgroup( "anillo-chord" ); */
   printf("Finalizando nodos...\n");
-  for(i=0;i<info;i++) pvm_kill(tids[i]);
+  for(i=0;i<NPROC-1;i++) pvm_kill(tids[i]);
   printf("Proceso padre saliendo...\n");
   pvm_exit();
   return 0;
