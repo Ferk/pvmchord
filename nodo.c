@@ -6,7 +6,7 @@
 
 #define NPROC 8
 
-#define PING 1
+#define REPORT 1
 
 #define PETITION 2
 #define NOTIFY 3
@@ -29,7 +29,7 @@ void pfound(int);
 void stabilize(int , int , int );
 
 int findNext();
-
+void reportState();
 
 int mytid;                  /* mi task id */
 int mynode;                 /* mi numero en el anillo */
@@ -64,7 +64,6 @@ int main(int argc, char *argv[])
 
   /* Inicialmente el predecesor se toma como inexistente */
   predecessor = -1;
-  successor = -1;
 
   successor = findNext();
 
@@ -122,15 +121,23 @@ void dowork( int mytid, int mynode )
   /*** Verificar sucesor inmediato ***/
   /* preguntando a mi sucesor si soy yo su antecesor */
   pvm_initsend( PvmDataDefault );
-  info=ANTECESOR;
-  pvm_pkint( &info, 1, 1);
+  msg=ANTECESOR;
+  pvm_pkint( &msg, 1, 1);
   pvm_send(successor, PETITION );
   info = pvm_trecv( successor, ANTECESOR, &tmout );
   if ( info > 0 ) {
     pvm_upkint( &nodo_x, 1, 1);
+    if( nodo_x == -1) {
+      /* Notificar a mi sucesor de que soy su antecesor */
+      pvm_initsend( PvmDataDefault );
+      msg= ANTECESOR;
+      pvm_pkint( &msg, 1, 1); /* mensaje de notificacion tipo antecesor */
+      pvm_pkint( &mytid, 1, 1); /* conteniendo mi tid */
+      pvm_send( successor, NOTIFY );
+    }
     if( nodo_x != mytid ) {
       /*** ¡Nuevo nodo! ***/
-      /* Añadir el nuevo nodo como nuevo predecesor */
+      /* Añadir el nuevo nodo como nuevo sucesor */
       successor = nodo_x;
       /* Notificar al nuevo nodo de que soy su antecesor */
       pvm_initsend( PvmDataDefault );
@@ -141,6 +148,9 @@ void dowork( int mytid, int mynode )
     }
   }
 
+  /*******************************************/
+  /** Reportar el estado del nodo para ser mostrado en la interfaz **/
+  reportState();
 
   /*******************************/
   /*** Atender Notificaciones ***/
@@ -168,7 +178,7 @@ void dowork( int mytid, int mynode )
       break;
     }
   }
-  
+
 }
 
 
@@ -205,7 +215,7 @@ void dowork( int mytid, int mynode )
 
 
 /********
-         Devuelve el nodo activo siguiente
+ Devuelve el nodo activo siguiente
 */
 int findNext()
 {
@@ -222,7 +232,32 @@ int findNext()
 }
 
 
+/*******************************************/
+/** Reportar el estado del nodo al padre,
+    quien lo mostrará en la interfaz **/
+void reportState()
+{
+  int pred= pvm_getinst("anillo-chord",predecessor);
+  int succ= pvm_getinst("anillo-chord",successor);
 
+  pvm_initsend( PvmDataDefault );
+  pvm_pkint(&mynode,1,1);
+  pvm_pkint(&pred,1,1);
+  pvm_pkint(&succ,1,1);
+  pvm_send(pvm_parent(), REPORT);
+
+}
+
+ 
+/************************
+ Atender la peticion del token
+*/ 
+void pfound(int token)
+{  
+  printf("Yo tengo el %d!\n",token);
+} 
+ 
+  
 
 
 
