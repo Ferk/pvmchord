@@ -13,7 +13,7 @@
 
 #define ANTECESOR 4
 #define KEY 5
-#define NEXTFINDING 6
+#define SUCCESSOR 6
 
 
 #include <stdio.h>
@@ -28,7 +28,7 @@ void pfound(int);
 
 void stabilize(int , int , int );
 
-int findNextOf(int);
+int findNext();
 
 
 int mytid;                  /* mi task id */
@@ -40,7 +40,6 @@ int main(int argc, char *argv[])
 {
   int i;
 
-
   /* identificarme en pvm */
   mytid = pvm_mytid();
 
@@ -49,20 +48,25 @@ int main(int argc, char *argv[])
   printf("me = %d mytid = %d\n",mynode,mytid);
 
 
-  /***********/
+  /******************************************/
+  /*** BARRERA ***/
+  pvm_barrier("anillo-chord",NPROC);
+
+
+  /********************************************************************/
+  /* Aleatoriamente se cerraría el nodo (dejamos huecos en el anillo)  */
+
+
+  
+
+  /*********************/
   /* Creación/Unión al anillo */
 
   /* Inicialmente el predecesor se toma como inexistente */
   predecessor = -1;
   successor = -1;
 
-  if( mynode == 0 ) {
-    /* El primer nodo del anillo será el único nodo existente en ese momento */
-    successor = mytid; /* y será su propio sucesor */
-  }
-  else {
-    successor = findNextOf(mynode);
-  }
+  successor = findNext();
 
 
   /******************************/
@@ -106,13 +110,8 @@ void dowork( int mytid, int mynode )
     case ANTECESOR: /* peticion de predecesor */
       pvm_pkint( &predecessor, 1, 1);
       break;
-    case PING: /* peticion de disponibilidad */
-      
-      break;
-    case NEXTFINDING: /* Petición de búsqueda de clave */
-      pvm_upkint(&token,1,1); // tid del nodo sin succesor
-      token= findNextOf(token); 
-      
+    case SUCCESSOR: /* Petición de sucesor */
+      pvm_pkint( &successor, 1, 1);
       break;
     }
     pvm_initsend( PvmDataDefault );
@@ -169,7 +168,7 @@ void dowork( int mytid, int mynode )
       break;
     }
   }
-
+  
 }
 
 
@@ -179,14 +178,21 @@ void dowork( int mytid, int mynode )
 /***
     The pseudocode to find the successor node of an id is given below:
 
+
+    id: nodo que busca su sucesor
+     n: nodo al que le pregunta, que segun nuestro sistema es el anterior a id (id-1)
+
     // ask node n to find the successor of id
     n.find_successor(id)
     if (id\in(n, successor])
     return successor;        //Si id está entre n y su sucesor hay que 
     else                     //devolver sucessor (el sucesor de n)
     // forward the query around the circle
+    // con nuestro sistema NO
+
     n0 = closest_preceding_node(id); //Sino busca el sucesor mas cercano
     return n0.find_successor(id);
+
 
     // search the local table for the highest predecessor of id
     n.closest_preceding_node(id)
@@ -201,71 +207,22 @@ void dowork( int mytid, int mynode )
 /********
          Devuelve el nodo activo siguiente
 */
-int findNextOf(int id)
+int findNext()
 {
-  int id_succ=-1;
-  int msg=NEXTFINDING;
-  int info;
+  int tid_dest, i;
 
-  struct timeval tmout; /* timeout para la rutina trecv */
-  tmout.tv_sec=0; /* indica que trecv esperara estos segundos */
-  tmout.tv_usec=100000; /* y estos microsegundos */
+  i= mynode+1;
+  do {
+    tid_dest= pvm_gettid("anillo-chord",i);
+    if(i>NPROC-1) i=0;
+    else i++;
+  } while( tid_dest == PvmNoInst );
 
-  if(successor != -1 && mynode<id && id<successor)
-    id_succ=successor;
-  else {
-    /* de lo contrario transmite la notificación por el anillo */
-        pvm_initsend( PvmDataDefault );
-        pvm_pkint(&msg,1,1);
-        pvm_pkint(&id,1,1);
-        pvm_send(successor, PETITION );
-        info = pvm_trecv( successor, ANTECESOR, &tmout );
-        if ( info > 0 ) {
-          pvm_upkint( &id_succ, 1, 1);
-  }
-
-<<<<<<< .mine
-  return id_succ;
-=======
-    pvm_initsend( PvmDataDefault );
-    tag= PING;
-    pvm_pkint(&tag,1,1);
-    info = pvm_send( next, PETITION);
-    info = pvm_trecv( next, PING, &tmout );
-    if(info>0){
-      pvm_bufinfo(info,&longitud,&tag,&tidReceptor);/* Saca información del buffer activo*/
-      
-      printf("Se ha recibido algo!\n");
-    }
-  } while(info == 0);
-
-  return next;
->>>>>>> .r16
-}
-
-
-/******************
-Transmite la petición de un token
--OBSOLETO-
-*/
-void ptransmit(int token, int destination)
-{
-  printf("transmitiendo peticion a %d\n",destination);
-
-  pvm_initsend( PvmDataDefault );
-  pvm_pkint( &token, 1, 1);
-  pvm_send( destination, PETITION );
+  return tid_dest;
 }
 
 
 
-/*************************
- Atender la peticion del token
-*/
-void pfound(int token)
-{
-  printf("Yo tengo el %d!\n",token);
-}
 
 
 
