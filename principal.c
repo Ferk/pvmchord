@@ -41,6 +41,8 @@ int main(int argc, char *argv[])
   /***************************/
   /*** Peticion de claves  ***/
 
+  /*
+
   printf("Introduce clave a buscar:");
   scanf("%d",&token);
 
@@ -51,7 +53,7 @@ int main(int argc, char *argv[])
   pvm_send( tids[0], NOTIFY );
 
   printf("petición de token enviada\n");
-
+  */
 
   /****************/
   /* Programa terminado, salir de pvm */
