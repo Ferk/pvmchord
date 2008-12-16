@@ -13,6 +13,7 @@
 
 #define ANTECESOR 4
 #define KEY 5
+#define NEXTFINDING 6
 
 
 #include <stdio.h>
@@ -27,16 +28,16 @@ void pfound(int);
 
 void stabilize(int , int , int );
 
-int findnext(int);
+int findNextOf(int);
 
 
+int mytid;                  /* mi task id */
+int mynode;                 /* mi numero en el anillo */
 int predecessor;
 int successor;
 
 int main(int argc, char *argv[])
 {
-  int mytid;                  /* mi task id */
-  int mynode;                 /* mi numero en el anillo */
   int i;
 
 
@@ -53,13 +54,14 @@ int main(int argc, char *argv[])
 
   /* Inicialmente el predecesor se toma como inexistente */
   predecessor = -1;
+  successor = -1;
 
   if( mynode == 0 ) {
     /* El primer nodo del anillo será el único nodo existente en ese momento */
     successor = mytid; /* y será su propio sucesor */
   }
   else {
-    successor = findnext(mynode);
+    successor = findNextOf(mynode);
   }
 
 
@@ -105,6 +107,11 @@ void dowork( int mytid, int mynode )
       pvm_pkint( &predecessor, 1, 1);
       break;
     case PING: /* peticion de disponibilidad */
+      
+      break;
+    case NEXTFINDING: /* Petición de búsqueda de clave */
+      pvm_upkint(&token,1,1); // tid del nodo sin succesor
+      token= findNextOf(token); 
       
       break;
     }
@@ -160,7 +167,6 @@ void dowork( int mytid, int mynode )
         pvm_send(sender, NOTIFY );
       }
       break;
-
     }
   }
 
@@ -190,25 +196,37 @@ void dowork( int mytid, int mynode )
     return n;
 ***/
 
+
+
 /********
          Devuelve el nodo activo siguiente
 */
-int findnext(int me)
+int findNextOf(int id)
 {
-  int next, gnext;
+  int id_succ=-1;
+  int msg=NEXTFINDING;
   int info;
-  int longitud,tidReceptor,tag;
 
   struct timeval tmout; /* timeout para la rutina trecv */
   tmout.tv_sec=0; /* indica que trecv esperara estos segundos */
   tmout.tv_usec=100000; /* y estos microsegundos */
 
-  gnext=me;
-  do {
-    gnext++;
-    if( gnext == NPROC ) next = pvm_gettid("anillo-chord", 0);
-    else                 next= pvm_gettid("anillo-chord", gnext);
+  if(successor != -1 && mynode<id && id<successor)
+    id_succ=successor;
+  else {
+    /* de lo contrario transmite la notificación por el anillo */
+        pvm_initsend( PvmDataDefault );
+        pvm_pkint(&msg,1,1);
+        pvm_pkint(&id,1,1);
+        pvm_send(successor, PETITION );
+        info = pvm_trecv( successor, ANTECESOR, &tmout );
+        if ( info > 0 ) {
+          pvm_upkint( &id_succ, 1, 1);
+  }
 
+<<<<<<< .mine
+  return id_succ;
+=======
     pvm_initsend( PvmDataDefault );
     tag= PING;
     pvm_pkint(&tag,1,1);
@@ -222,6 +240,7 @@ int findnext(int me)
   } while(info == 0);
 
   return next;
+>>>>>>> .r16
 }
 
 
