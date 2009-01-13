@@ -37,6 +37,8 @@ int mynode;                 /* mi numero en el anillo */
 int predecessor;
 int successor;
 
+
+
 int main(int argc, char *argv[])
 {
   int i;
@@ -49,34 +51,41 @@ int main(int argc, char *argv[])
   printf("me = %d mytid = %d\n",mynode,mytid);
 
 
-  /******************************************/
-  /*** BARRERA ***/
-  pvm_barrier("anillo-chord",NPROC);
 
-
-  /********************************************************************/
   /* Aleatoriamente se cerraría el nodo (dejamos huecos en el anillo)  */
+  srand(mytid+mynode);
+  if( rand() > RAND_MAX/4 ) {
 
+    /******************************************/
+    /* Procesos dentro del anillo */
+    /*** BARRERA ***/
+    pvm_barrier("anillo-chord",NPROC);
 
-  
-
-  /*********************/
-  /* Creación/Unión al anillo */
-
-  /* Inicialmente el predecesor se toma como inexistente */
-  predecessor = -1;
-
-  successor = findNext();
-
-  printf("inicialmente, mi sucessor: %d (%d).\n",successor,pvm_getinst("anillo-chord",successor));
-
-  /******************************/
-  /* Bucle de trabajo del nodo durante X ciclos */
-  int cicles= 5; /* Luego lo pondremos aleatorio */
-  for(i=0; i<cicles; i++) {
-    dowork(mytid, mynode);
+    /*********************/
+    /* Creación/Unión al anillo */
+    
+    /* Inicialmente el predecesor se toma como inexistente */
+    predecessor = -1;
+    
+    successor = findNext();
+    
+    printf("inicialmente, mi sucessor: %d (%d).\n",successor,pvm_getinst("anillo-chord",successor));
+    
+    /******************************/
+    /* Bucle de trabajo del nodo durante X ciclos */
+    int cicles= 5; /* Luego lo pondremos aleatorio */
+    for(i=0; i<cicles; i++) {
+      dowork(mytid, mynode);
+    }
+    
+  }  else {
+    /******************************************/
+    /* Procesos a expulsar del anillo  */
+    printf("El nodo %d sale al inicio\n",mynode);
+    pvm_barrier("anillo-chord",NPROC);
   }
-
+    
+    
   /********************/
   /* Programa terminado, salir del grupo y de pvm */
   pvm_lvgroup( "anillo-chord" );
@@ -122,42 +131,38 @@ void dowork( int mytid, int mynode )
 
   /***********************************/
   /*** Verificar sucesor inmediato ***/
-  if( successor == 0 )
-    printf("Mi sucesor se ha caido.\n");
-    else {
-      /* preguntando a mi sucesor si soy yo su antecesor */
+  /* preguntando a mi sucesor si soy yo su antecesor */
+  pvm_initsend( PvmDataDefault );
+  msg=ANTECESOR; /* peticion de mensaje ANTECESOR */
+  pvm_pkint( &msg, 1, 1);
+  pvm_send(successor, PETITION ); /* envió de petición */
+  printf("petición ANTECESOR enviada a %d\n",successor);
+  info = pvm_trecv( successor, ANTECESOR, &tmout ); /* recepción de petición */
+  if ( info > 0 ) {
+    printf("petición atendida por %d.\n",successor);
+    pvm_upkint( &nodo_x, 1, 1);
+    if( nodo_x == -1) {
+      /* Notificar a mi sucesor de que soy su antecesor */
+      printf("notifico a mi sucesor %d, de que yo le precedo\n",successor);
       pvm_initsend( PvmDataDefault );
-      msg=ANTECESOR; /* peticion de mensaje ANTECESOR */
-      pvm_pkint( &msg, 1, 1);
-      pvm_send(successor, PETITION ); /* envió de petición */
-      printf("petición ANTECESOR enviada a %d\n",successor);
-      info = pvm_trecv( successor, ANTECESOR, &tmout ); /* recepción de petición */
-      if ( info > 0 ) {
-        printf("petición atendida por %d.\n",successor);
-        pvm_upkint( &nodo_x, 1, 1);
-        if( nodo_x == -1) {
-          /* Notificar a mi sucesor de que soy su antecesor */
-          printf("notifico a mi sucesor %d, de que yo le precedo\n",successor);
-          pvm_initsend( PvmDataDefault );
-          msg= ANTECESOR;
-          pvm_pkint( &msg, 1, 1); /* mensaje de notificacion tipo antecesor */
-          pvm_pkint( &mytid, 1, 1); /* conteniendo mi tid */
-          pvm_send( successor, NOTIFY );
-        }
-        else if( nodo_x != mytid ) {
-          /*** ¡Nuevo nodo! ***/
-          /* Añadir el nuevo nodo como nuevo sucesor */
-          printf("tengo nuevo (%d) successor! reemplazo a %d\n",nodo_x,successor);
-          successor = nodo_x;
-          /* Notificar al nuevo nodo de que soy su antecesor */
-          pvm_initsend( PvmDataDefault );
-          msg= ANTECESOR;
-          pvm_pkint( &msg, 1, 1); /* mensaje de notificacion tipo antecesor */
-          pvm_pkint( &mytid, 1, 1); /* conteniendo mi tid */
-          pvm_send( nodo_x, NOTIFY );
-        }
-      }
+      msg= ANTECESOR;
+      pvm_pkint( &msg, 1, 1); /* mensaje de notificacion tipo antecesor */
+      pvm_pkint( &mytid, 1, 1); /* conteniendo mi tid */
+      pvm_send( successor, NOTIFY );
     }
+    else if( nodo_x != mytid ) {
+      /*** ¡Nuevo nodo! ***/
+      /* Añadir el nuevo nodo como nuevo sucesor */
+      printf("tengo nuevo (%d) successor! reemplazo a %d\n",nodo_x,successor);
+      successor = nodo_x;
+      /* Notificar al nuevo nodo de que soy su antecesor */
+      pvm_initsend( PvmDataDefault );
+      msg= ANTECESOR;
+      pvm_pkint( &msg, 1, 1); /* mensaje de notificacion tipo antecesor */
+      pvm_pkint( &mytid, 1, 1); /* conteniendo mi tid */
+      pvm_send( nodo_x, NOTIFY );
+    }
+  }
 
 
   /*******************************************/
