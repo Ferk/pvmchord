@@ -25,7 +25,6 @@ int main(int argc, char *argv[])
   int tids[NPROC];            /* array de task id */
   int info;
   int i;
-  int msg, token;
 
   int predecessor, successor, node;
 
@@ -35,8 +34,8 @@ int main(int argc, char *argv[])
   /***************/
   /* Expansión de procesos nodo (creación del anillo) */
   pvm_catchout(stdout);
-  info= pvm_spawn("nodo", (char**)0, 0, "", NPROC-1, tids);
-  if( info != NPROC-1 ) {
+  info= pvm_spawn("nodo", (char**)0, 0, "", NPROC, tids);
+  if( info != NPROC ) {
     for(i=0;i<info;i++) pvm_kill(tids[i]);
     pvm_exit();
     return 1;
@@ -49,7 +48,7 @@ int main(int argc, char *argv[])
 
   /*************************************/
   /*** Recabar y mostrar información ***/
-  for(i=0; i<100; i++) {
+  for(i=0; i<130; i++) {
     info = pvm_trecv( -1, REPORT, &tmout );
     if ( info > 0 ) {
       pvm_upkint(&node,1,1);
@@ -83,8 +82,8 @@ int main(int argc, char *argv[])
   /****************/
   /* Programa terminado, salir de pvm */
   /* pvm_lvgroup( "anillo-chord" ); */
-  printf("Finalizando nodos...\n");
-  for(i=0;i<NPROC-1;i++) pvm_kill(tids[i]);
+  //printf("Finalizando nodos...\n");
+  //for(i=0;i<NPROC-1;i++) pvm_kill(tids[i]);
   printf("Proceso padre saliendo...\n");
   pvm_exit();
   return 0;
