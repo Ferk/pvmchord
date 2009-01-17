@@ -54,12 +54,12 @@ int main(int argc, char *argv[])
 
   /* Aleatoriamente se cerraría el nodo (dejamos huecos en el anillo)  */
   srand(mytid+mynode);
-  if( rand() > RAND_MAX/4 ) {
-
     /******************************************/
     /* Procesos dentro del anillo */
     /*** BARRERA ***/
     pvm_barrier("anillo-chord",NPROC);
+
+  if( rand() > RAND_MAX/4 ) {
 
     /*********************/
     /* Creación/Unión al anillo */
