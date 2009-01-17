@@ -2,13 +2,42 @@
 
 
 ** Presentacion **
-+ introduccion
-+ analisis del problema
-+ solucion aportada al problema
+++ introduccion
+
+PVM es.. blah blah blah... (ver la documentacion de los trabajos de ejemplo.. las introducciones son todas parecidas)
+
+++ Analisis del problema
+
+El objetivo que se nos plantea consiste en la simulación de una red P2P (peer to peer). Esto es, una red en la que cada unidad que la constituye (cada nodo) obtiene idénticos privilegios que el resto, de forma que no existan nucleos centrales, tratando de lograr la máxima descentralización.
+
+Ese tipo de redes poseen multitud de aplicaciones, desde juegos sin servidores centrales, a conferencias de voz y video en tiempo real (como el protocolo Jingle en redes XMPP). Pero, sin duda, su aplicación más popular es la de los sistemas de compartición de archivos. Siendo a veces, en el lenguaje coloquial, sinónimo de "red p2p".
+
+
+
+++ Solucion aportada al problema
+
+
+Resultaría muy sencillo abordar el problema empleando directamente las funcionalidades de pvm para manejar grupos de procesos, de modo que se simplificase enormemente el código necesitando de sólo unas cuantas instrucciones pvm. Sin embargo, el objetivo de esta práctica es conseguir mostrar un programa que saque a relucir los problemas comunes en la comunicación entre nodos que ocurre cuando estos no se encuentran en un entorno controlado mediante una máquina virtual, y donde no es posible para el resto de nodos conocer en nada a los demás sin haber recibido referencia previa (y para ello no sería posible usar instrucciones de máquina virtual ni ningún tipo de nodo central, ya que estamos tratando una red de iguales). Es por ello, que se nos encargó la realización de la simulación del mecanismo de una red en anillo siguiendo un algoritmo diseñado para esta clase de entornos, el algoritmo de red Chord.
+
+Por otro lado, esto presenta también diversos inconvenientes, y es que el algoritmo de Chord no... (no muestra un sistema claro de recuperación frente a la caida de nodos? ...o no lo necesita...?) y, si bien es uno de los algoritmos p2p más simples, su completa implementación en un sistema como pvm, tomaría más tiempo del que se dispone en esta asignatura. (Pues el hecho de que las instrucciones del algoritmo deban ser ideadas sin el empleo de llamadas a la máquina virtual para obtener información del resto de la red complica el código sobremanera.)
+
+Es por ello que en el desarrollo de nuestro programa hemos decidido llegar a una situación de compromiso, suficiente para entender la mecánica de un anillo Chord, aún sin llegar a una profunda implementación de su algoritmo. 
+
+
+
+
+Chord es un sistema sencillo de búsqueda distribuida en redes P2P que asocia una clave a cada nodo. Su funcionamiento permite concluir con un resultado exhaustivo de la búsqueda.
+
+
+
   - diagramas, graficos, etc
   - clarificar los algoritmos empleados para la solucion comentando las regiones claves del codigo (pero usar el anexo para poner el código en sí)
-+ bibliografia (no numerada)
-+ anexo 
+
+
+++ bibliografia (no numerada)
+
+
+++ anexos
   - codigo fuente del programa (padre, hijos..)
   - pruebas de ejecucion
   - otros algoritmos y documentos relativos al problema
