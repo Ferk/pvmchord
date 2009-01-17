@@ -1,0 +1,30 @@
+
+
+
+** Presentacion **
++ introduccion
++ analisis del problema
++ solucion aportada al problema
+  - diagramas, graficos, etc
+  - clarificar los algoritmos empleados para la solucion comentando las regiones claves del codigo (pero usar el anexo para poner el código en sí)
++ bibliografia (no numerada)
++ anexo 
+  - codigo fuente del programa (padre, hijos..)
+  - pruebas de ejecucion
+  - otros algoritmos y documentos relativos al problema
+
+
+
+
+
+** Otras consideraciones relativas al tipo de trabajo **
++ Ejemplos
+ - Paralelizacion de algoritmos (Ej: procesado de imagen por zonas)
+ - Simulacion de situaciones reales (Ej: juegos, gestion, logistica...)
+ - Mejorar antiguos trabajos
++ Requerimientos
+ - Paralelo, no secuencial
+ - Escalable (lo mismo pa 10 que pa 100)
+ - Eficiente (interesante hacer el calculo)
+     E=t1p/(np*tnp) ; tnp= t1p/np = eficiencia (lo ideal E=1)
+ 
