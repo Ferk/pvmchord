@@ -66,7 +66,7 @@ int main(int argc, char *argv[])
     
     /* Inicialmente el predecesor se toma como inexistente */
     predecessor = -1;
-    
+    sleep(1);
     successor = findNext();
     
     printf("inicialmente, mi sucessor: %d (%d).\n",successor,pvm_getinst("anillo-chord",successor));
@@ -82,10 +82,9 @@ int main(int argc, char *argv[])
     /******************************************/
     /* Procesos a expulsar del anillo  */
     printf("El nodo %d sale al inicio\n",mynode);
-    pvm_barrier("anillo-chord",NPROC);
   }
     
-    
+  //pvm_barrier("anillo-chord",NPROC);
   /********************/
   /* Programa terminado, salir del grupo y de pvm */
   pvm_lvgroup( "anillo-chord" );
