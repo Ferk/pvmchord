@@ -23,6 +23,9 @@
 #include <sys/types.h>
 #include "pvm3.h"
 
+#include <unistd.h>
+
+
 void dowork( int, int );
 void ptransmit(int, int);
 void pfound(int);
@@ -54,19 +57,20 @@ int main(int argc, char *argv[])
 
   /* Aleatoriamente se cerraría el nodo (dejamos huecos en el anillo)  */
   srand(mytid+mynode);
+
+
+  if( rand() > RAND_MAX/4 ) {
     /******************************************/
     /* Procesos dentro del anillo */
     /*** BARRERA ***/
     pvm_barrier("anillo-chord",NPROC);
-
-  if( rand() > RAND_MAX/4 ) {
+    sleep(1);
 
     /*********************/
     /* Creación/Unión al anillo */
     
     /* Inicialmente el predecesor se toma como inexistente */
     predecessor = -1;
-    sleep(1);
     successor = findNext();
     
     printf("inicialmente, mi sucessor: %d (%d).\n",successor,pvm_getinst("anillo-chord",successor));
@@ -81,6 +85,8 @@ int main(int argc, char *argv[])
   }  else {
     /******************************************/
     /* Procesos a expulsar del anillo  */
+    /*** BARRERA ***/
+    pvm_barrier("anillo-chord",NPROC);
     printf("El nodo %d sale al inicio\n",mynode);
   }
     
