@@ -66,7 +66,7 @@ int main(int argc, char *argv[])
     /******************************************/
     /* Procesos dentro del anillo */
     /*** BARRERA ***/
-    pvm_barrier("anillo-chord",NPROC);
+    //pvm_barrier("anillo-chord",NPROC);
 
     /* indicar la entrada del nodo en el anillo */
     reportEntering();
@@ -89,7 +89,7 @@ int main(int argc, char *argv[])
     /******************************************/
     /* Procesos a expulsar del anillo  */
     /*** BARRERA ***/
-    pvm_barrier("anillo-chord",NPROC);
+    //pvm_barrier("anillo-chord",NPROC);
   }
     
   //pvm_barrier("anillo-chord",NPROC);
