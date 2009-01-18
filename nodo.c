@@ -26,11 +26,11 @@
 #include <unistd.h>
 
 
-void dowork( int, int );
+void mainloop( );
 void ptransmit(int, int);
 void pfound(int);
 
-void stabilize(int , int , int );
+void stabilize( );
 
 int findNext();
 void reportState();
@@ -64,7 +64,7 @@ int main(int argc, char *argv[])
     /* Procesos dentro del anillo */
     /*** BARRERA ***/
     pvm_barrier("anillo-chord",NPROC);
-    sleep(1);
+    //sleep(1);
 
     /*********************/
     /* Creación/Unión al anillo */
@@ -79,7 +79,7 @@ int main(int argc, char *argv[])
     /* Bucle de trabajo del nodo durante X ciclos */
     int cicles= 5; /* Luego lo pondremos aleatorio */
     for(i=0; i<cicles; i++) {
-      dowork(mytid, mynode);
+      mainloop();
     }
     
   }  else {
@@ -99,12 +99,12 @@ int main(int argc, char *argv[])
 }
 
 
-void dowork( int mytid, int mynode )
+
+void mainloop()
 {
   int token;
 
   int info;
-  int nodo_x;
 
   int msg, sender;
   struct timeval tmout; /* timeout para la rutina trecv */
@@ -133,42 +133,9 @@ void dowork( int mytid, int mynode )
     pvm_send(sender, msg );
   }
 
-
-  /***********************************/
-  /*** Verificar sucesor inmediato ***/
-  /* preguntando a mi sucesor si soy yo su antecesor */
-  pvm_initsend( PvmDataDefault );
-  msg=ANTECESOR; /* peticion de mensaje ANTECESOR */
-  pvm_pkint( &msg, 1, 1);
-  pvm_send(successor, PETITION ); /* envió de petición */
-  printf("petición ANTECESOR enviada a %d\n",successor);
-  info = pvm_trecv( successor, ANTECESOR, &tmout ); /* recepción de petición */
-  if ( info > 0 ) {
-    printf("petición atendida por %d.\n",successor);
-    pvm_upkint( &nodo_x, 1, 1);
-    if( nodo_x == -1) {
-      /* Notificar a mi sucesor de que soy su antecesor */
-      printf("notifico a mi sucesor %d, de que yo le precedo\n",successor);
-      pvm_initsend( PvmDataDefault );
-      msg= ANTECESOR;
-      pvm_pkint( &msg, 1, 1); /* mensaje de notificacion tipo antecesor */
-      pvm_pkint( &mytid, 1, 1); /* conteniendo mi tid */
-      pvm_send( successor, NOTIFY );
-    }
-    else if( nodo_x != mytid ) {
-      /*** ¡Nuevo nodo! ***/
-      /* Añadir el nuevo nodo como nuevo sucesor */
-      printf("tengo nuevo (%d) successor! reemplazo a %d\n",nodo_x,successor);
-      successor = nodo_x;
-      /* Notificar al nuevo nodo de que soy su antecesor */
-      pvm_initsend( PvmDataDefault );
-      msg= ANTECESOR;
-      pvm_pkint( &msg, 1, 1); /* mensaje de notificacion tipo antecesor */
-      pvm_pkint( &mytid, 1, 1); /* conteniendo mi tid */
-      pvm_send( nodo_x, NOTIFY );
-    }
-  }
-
+  /********************************************/
+  /*** Rutinas de estabilización del anillo ***/
+  stabilize();
 
   /*******************************************/
   /** Reportar el estado del nodo para ser mostrado en la interfaz **/
@@ -204,7 +171,56 @@ void dowork( int mytid, int mynode )
 }
 
 
+void stabilize()
+{
+  int nodo_x, msg, info;
 
+  struct timeval tmout; /* timeout para la rutina trecv */
+  tmout.tv_sec=0; /* indica que trecv esperara estos segundos */
+  tmout.tv_usec=1000000; /* y estos microsegundos */
+
+  /***************************************/
+  /* Comprobar si el sucesor se ha caido */
+  if ( pvm_getinst("anillo-chord",successor) < 0 ) {
+    successor = findNext();
+  }
+  else {
+  /***********************************/
+  /*** Verificar sucesor inmediato ***/
+  /* preguntando a mi sucesor si soy yo su antecesor */
+    pvm_initsend( PvmDataDefault );
+    msg=ANTECESOR; /* peticion de mensaje ANTECESOR */
+    pvm_pkint( &msg, 1, 1);
+    pvm_send(successor, PETITION ); /* envío de petición */
+    printf("petición ANTECESOR enviada a %d\n",successor);
+    info = pvm_trecv( successor, ANTECESOR, &tmout ); /* recepción de petición */
+    if ( info > 0 ) {
+    printf("petición atendida por %d.\n",successor);
+    pvm_upkint( &nodo_x, 1, 1);
+    if( nodo_x == -1) {
+      /* Notificar a mi sucesor de que soy su antecesor */
+      printf("notifico a mi sucesor %d, de que yo le precedo\n",successor);
+      pvm_initsend( PvmDataDefault );
+      msg= ANTECESOR;
+      pvm_pkint( &msg, 1, 1); /* mensaje de notificacion tipo antecesor */
+      pvm_pkint( &mytid, 1, 1); /* conteniendo mi tid */
+      pvm_send( successor, NOTIFY );
+    }
+    else if( nodo_x != mytid ) {
+      /*** ¡Nuevo nodo! ***/
+      /* Añadir el nuevo nodo como nuevo sucesor */
+      printf("tengo nuevo (%d) successor! reemplazo a %d\n",nodo_x,successor);
+      successor = nodo_x;
+      /* Notificar al nuevo nodo de que soy su antecesor */
+      pvm_initsend( PvmDataDefault );
+      msg= ANTECESOR;
+      pvm_pkint( &msg, 1, 1); /* mensaje de notificacion tipo antecesor */
+      pvm_pkint( &mytid, 1, 1); /* conteniendo mi tid */
+      pvm_send( nodo_x, NOTIFY );
+    }
+    }
+  }
+}
 
 
 
