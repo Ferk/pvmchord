@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
   int info, msg;
   int i;
   int nproc;
-  int insertions, max_insert;
+  int insertions=0, max_insert=10;
 
 
   int predecessor, successor, node;
