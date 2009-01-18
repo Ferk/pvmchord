@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
   int info, msg;
   int i;
   int nproc;
-  int insertions=0, max_insert=10;
+  int insertions=0, max_insert=5;
 
 
   int predecessor, successor, node;
@@ -73,11 +73,11 @@ int main(int argc, char *argv[])
           break;
         case 1:
           pvm_upkint(&node,1,1);
-          printf("<<--- El nodo %d entra al anillo\n", node);
+          printf("()<--- El nodo %d entra al anillo\n", node);
           break;
         case 2:
           pvm_upkint(&node,1,1);
-          printf("--->> El nodo %d sale del anillo\n", node);
+          printf("()---> El nodo %d sale del anillo\n", node);
           nproc--;
           break;
         }

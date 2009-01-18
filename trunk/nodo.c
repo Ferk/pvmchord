@@ -30,7 +30,7 @@ void mainloop( );
 void ptransmit(int, int);
 void pfound(int);
 
-int findNext();
+int findNext(int);
 void stabilize( );
 
 void reportState();
@@ -73,8 +73,11 @@ int main(int argc, char *argv[])
     /* Creación/Unión al anillo */
     /* Inicialmente el predecesor se toma como inexistente */
     predecessor = -1;
-    successor = findNext();
+    successor = findNext(mynode);
     
+    //printf("%d: inicialmente, mi sucessor: %d (%d).\n",mynode,successor,pvm_getinst("anillo-chord",successor));
+
+    reportState();
     
     /***************************************/
     /* El nodo trabajará durante un numero aleatorio de ciclos */
@@ -123,7 +126,7 @@ void mainloop()
     pvm_initsend( PvmDataDefault );
     switch(msg) {
     case ANTECESOR: /* peticion de predecesor */
-      printf("%d: enviando mi predecesor (%d) a %d.\n",mynode,predecessor,sender);
+      //printf("%d: enviando mi predecesor (%d) a %d.\n",mynode,predecessor,sender);
       pvm_pkint( &predecessor, 1, 1);
       break;
     case SUCCESSOR: /* Petición de sucesor */
@@ -152,7 +155,7 @@ void mainloop()
 
     case ANTECESOR: /* Nuevo tid de antecesor */
       pvm_upkint( &predecessor, 1, 1);
-      printf("%d: nuevo predecesor, %d.\n",mynode,predecessor);
+      //printf("%d: nuevo predecesor, %d.\n",mynode,predecessor);
       break;
 
     case KEY: /* Notificación de búsqueda de clave */
@@ -184,7 +187,7 @@ void stabilize()
   /***************************************/
   /* Comprobar si el sucesor se ha caido */
   if ( pvm_getinst("anillo-chord",successor) < 0 ) {
-    successor = findNext();
+    successor = findNext(mynode);
   }
   else {
   /***********************************/
@@ -258,11 +261,11 @@ void stabilize()
 /********
  Devuelve el nodo activo siguiente
 */
-int findNext()
+int findNext(int nodeOrigin)
 {
   int tid_dest, i;
 
-  i= mynode; 
+  i= nodeOrigin; 
   do {
     /* Comprobar siguiente en el grupo */
     if(i>=NPROC) i=0;
@@ -286,8 +289,8 @@ void reportState()
   int type=0;
   
   if( predecessor == -1) pred=-1;
-  else pred= pvm_getinst("anillo-chord",successor);
-  succ= pvm_getinst("anillo-chord",predecessor);
+  else pred= pvm_getinst("anillo-chord",predecessor);
+  succ= pvm_getinst("anillo-chord",successor);
   
   //printf("mi predecesor: %d (%d)\n",pred,predecessor);
 
@@ -302,6 +305,9 @@ void reportState()
 
 
 
+/*******************************************/
+/** Reportar la entrada del nodo al padre,
+    quien lo mostrará en la interfaz **/
 void reportEntering()
 {
   int type=1;
@@ -312,6 +318,9 @@ void reportEntering()
 }
 
 
+/*******************************************/
+/** Reportar la salida del nodo al padre,
+    quien lo mostrará en la interfaz **/
 void reportExiting()
 {
   int type=2;
@@ -320,6 +329,8 @@ void reportExiting()
   pvm_pkint(&mynode,1,1);
   pvm_send(pvm_parent(), REPORT);
 }
+
+
  
 /************************
  Atender la peticion del token
