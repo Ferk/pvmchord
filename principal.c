@@ -24,25 +24,30 @@ int main(int argc, char *argv[])
   int mytid;                  /* mi task id */
   int tids[NPROC];            /* array de task id */
   int info, msg;
-  int i,nproc,max;
+  int i;
+  int nproc;
+  int insertions, max_insert;
+
 
   int predecessor, successor, node;
 
   /* identificarme en pvm */
   mytid = pvm_mytid();
-max=10;
-nproc=NPROC;
+
+  /* Sembrar semilla aleatoria */
+  srand(mytid);
+
   /***************/
   /* Expansión de procesos nodo (creación del anillo) */
   pvm_catchout(stdout);
-  info= pvm_spawn("nodo", (char**)0, 0, "", NPROC, tids);
-  if( info != NPROC ) {
+  nproc= pvm_spawn("nodo", (char**)0, 0, "", NPROC, tids);
+  if( nproc != NPROC ) {
     for(i=0;i<info;i++) pvm_kill(tids[i]);
     pvm_exit();
     return 1;
   }
 
-  srand(-time(0));
+
   struct timeval tmout; /* timeout para la rutina trecv */
   tmout.tv_sec=0; /* indica que trecv esperara estos segundos */
   tmout.tv_usec=100000; /* y estos microsegundos */
@@ -50,33 +55,40 @@ nproc=NPROC;
   /*************************************/
   /*** Recabar y mostrar información ***/
   for(i=0; i<40; i++) {
-	  if( nproc<max && (rand() < RAND_MAX/4) ){
-	  	printf("Spameando un nodo\n");
-	  	pvm_spawn("nodo", (char**)0, 0, "", 1, tids);
-	  	nproc++;
-	  }
     info = pvm_trecv( -1, REPORT, &tmout );
     if ( info > 0 ) {
-      i=0; /* Pone el contador a cero, para que no deje de recibir informacion */
+      i=0; /* Pone el contador a cero, para seguir esperando informacion */
       pvm_upkint(&msg,1,1);
       switch (msg) {
         case 0:
           pvm_upkint(&node,1,1);
           pvm_upkint(&predecessor,1,1);
           pvm_upkint(&successor,1,1);
-          
-          printf("Nodo%d\t-->\tNodo%d\t-->\tNodo%d\n", predecessor, node, successor);
+
+          if( predecessor < 0 ) printf("*null*\t");
+          else printf("Nodo%d\t",predecessor);
+          printf("-->\tNodo%d\t-->\t",node);
+          if( successor < 0 ) printf("*null*\n");
+          else printf("Nodo%d\n",successor);
           break;
         case 1:
           pvm_upkint(&node,1,1);
-          printf("El nodo %d entra al anillo\n", node);
+          printf("<<--- El nodo %d entra al anillo\n", node);
           break;
         case 2:
           pvm_upkint(&node,1,1);
-          printf("El nodo %d sale del anillo\n", node);
+          printf("--->> El nodo %d sale del anillo\n", node);
           nproc--;
           break;
         }
+    }
+
+    /* Inserción de nuevos nodos */
+    if( insertions<max_insert && nproc<NPROC && (rand() < RAND_MAX/4) ) {
+      printf("Spawneando un nodo\n");
+      pvm_spawn("nodo", (char**)0, 0, "", 1, tids);
+      nproc++;
+      insertions++;
     }
 
   }

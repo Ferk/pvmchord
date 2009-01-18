@@ -54,8 +54,6 @@ int main(int argc, char *argv[])
 
   /* Unirme al grupo  */
   mynode = pvm_joingroup( "anillo-chord" );
-  //printf("me = %d mytid = %d\n",mynode,mytid);
-
 
 
   /* Aleatoriamente se cerraría el nodo (dejamos huecos en el anillo)  */
@@ -80,8 +78,8 @@ int main(int argc, char *argv[])
     
     /***************************************/
     /* El nodo trabajará durante un numero aleatorio de ciclos */
-    int cicles= 20.0*rand()/RAND_MAX; 
-    for(i=0; i<cicles; i++) {
+    int life= 20.0*rand()/RAND_MAX; 
+    for(i=0; i<life; i++) {
       mainloop();
     }
     
@@ -92,7 +90,7 @@ int main(int argc, char *argv[])
     //pvm_barrier("anillo-chord",NPROC);
   }
     
-  //pvm_barrier("anillo-chord",NPROC);
+
   /********************/
   /* Programa terminado, salir del grupo y de pvm */
   pvm_lvgroup( "anillo-chord" );
@@ -125,7 +123,7 @@ void mainloop()
     pvm_initsend( PvmDataDefault );
     switch(msg) {
     case ANTECESOR: /* peticion de predecesor */
-      //printf("enviando mi predecesor (%d) a %d.\n",predecessor,sender);
+      printf("%d: enviando mi predecesor (%d) a %d.\n",mynode,predecessor,sender);
       pvm_pkint( &predecessor, 1, 1);
       break;
     case SUCCESSOR: /* Petición de sucesor */
@@ -154,6 +152,7 @@ void mainloop()
 
     case ANTECESOR: /* Nuevo tid de antecesor */
       pvm_upkint( &predecessor, 1, 1);
+      printf("%d: nuevo predecesor, %d.\n",mynode,predecessor);
       break;
 
     case KEY: /* Notificación de búsqueda de clave */
@@ -282,9 +281,15 @@ int findNext()
     quien lo mostrará en la interfaz **/
 void reportState()
 {
-  int pred= pvm_getinst("anillo-chord",predecessor);
-  int succ= pvm_getinst("anillo-chord",successor);
+  int pred;
+  int succ; 
   int type=0;
+  
+  if( predecessor == -1) pred=-1;
+  else pred= pvm_getinst("anillo-chord",successor);
+  succ= pvm_getinst("anillo-chord",predecessor);
+  
+  //printf("mi predecesor: %d (%d)\n",pred,predecessor);
 
   pvm_initsend( PvmDataDefault );
   pvm_pkint(&type,1,1);
