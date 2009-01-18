@@ -40,6 +40,9 @@ int mynode;                 /* mi numero en el anillo */
 int predecessor;
 int successor;
 
+void reportEntering();
+void reportExiting();
+
 
 
 int main(int argc, char *argv[])
@@ -51,7 +54,7 @@ int main(int argc, char *argv[])
 
   /* Unirme al grupo  */
   mynode = pvm_joingroup( "anillo-chord" );
-  printf("me = %d mytid = %d\n",mynode,mytid);
+  //printf("me = %d mytid = %d\n",mynode,mytid);
 
 
 
@@ -64,16 +67,16 @@ int main(int argc, char *argv[])
     /* Procesos dentro del anillo */
     /*** BARRERA ***/
     pvm_barrier("anillo-chord",NPROC);
-    //sleep(1);
+
+    /* indicar la entrada del nodo en el anillo */
+    reportEntering();
 
     /*********************/
     /* Creación/Unión al anillo */
-    
     /* Inicialmente el predecesor se toma como inexistente */
     predecessor = -1;
     successor = findNext();
     
-    printf("inicialmente, mi sucessor: %d (%d).\n",successor,pvm_getinst("anillo-chord",successor));
     
     /******************************/
     /* Bucle de trabajo del nodo durante X ciclos */
@@ -87,13 +90,13 @@ int main(int argc, char *argv[])
     /* Procesos a expulsar del anillo  */
     /*** BARRERA ***/
     pvm_barrier("anillo-chord",NPROC);
-    printf("El nodo %d sale al inicio\n",mynode);
   }
     
   //pvm_barrier("anillo-chord",NPROC);
   /********************/
   /* Programa terminado, salir del grupo y de pvm */
   pvm_lvgroup( "anillo-chord" );
+  reportExiting();
   pvm_exit();
   return 0;
 }
@@ -111,7 +114,7 @@ void mainloop()
   tmout.tv_sec=0; /* indica que trecv esperara estos segundos */
   tmout.tv_usec=1000000; /* y estos microsegundos */
 
-  printf("mi sucessor: %d (%d).\n",successor,pvm_getinst("anillo-chord",successor));
+  //printf("mi sucessor: %d (%d).\n",successor,pvm_getinst("anillo-chord",successor));
 
   /**************************/
   /*** Atender peticiones ***/
@@ -122,11 +125,11 @@ void mainloop()
     pvm_initsend( PvmDataDefault );
     switch(msg) {
     case ANTECESOR: /* peticion de predecesor */
-      printf("enviando mi predecesor (%d) a %d.\n",predecessor,sender);
+      //printf("enviando mi predecesor (%d) a %d.\n",predecessor,sender);
       pvm_pkint( &predecessor, 1, 1);
       break;
     case SUCCESSOR: /* Petición de sucesor */
-      printf("enviando mi sucesor (%d) a %d.\n",successor,sender);
+      //printf("enviando mi sucesor (%d) a %d.\n",successor,sender);
       pvm_pkint( &successor, 1, 1);
       break;
     }
@@ -192,14 +195,14 @@ void stabilize()
     msg=ANTECESOR; /* peticion de mensaje ANTECESOR */
     pvm_pkint( &msg, 1, 1);
     pvm_send(successor, PETITION ); /* envío de petición */
-    printf("petición ANTECESOR enviada a %d\n",successor);
+    //printf("petición ANTECESOR enviada a %d\n",successor);
     info = pvm_trecv( successor, ANTECESOR, &tmout ); /* recepción de petición */
     if ( info > 0 ) {
-    printf("petición atendida por %d.\n",successor);
+      //printf("petición atendida por %d.\n",successor);
     pvm_upkint( &nodo_x, 1, 1);
     if( nodo_x == -1) {
       /* Notificar a mi sucesor de que soy su antecesor */
-      printf("notifico a mi sucesor %d, de que yo le precedo\n",successor);
+      //printf("notifico a mi sucesor %d, de que yo le precedo\n",successor);
       pvm_initsend( PvmDataDefault );
       msg= ANTECESOR;
       pvm_pkint( &msg, 1, 1); /* mensaje de notificacion tipo antecesor */
@@ -209,7 +212,7 @@ void stabilize()
     else if( nodo_x != mytid ) {
       /*** ¡Nuevo nodo! ***/
       /* Añadir el nuevo nodo como nuevo sucesor */
-      printf("tengo nuevo (%d) successor! reemplazo a %d\n",nodo_x,successor);
+      //printf("tengo nuevo (%d) successor! reemplazo a %d\n",nodo_x,successor);
       successor = nodo_x;
       /* Notificar al nuevo nodo de que soy su antecesor */
       pvm_initsend( PvmDataDefault );
@@ -281,8 +284,10 @@ void reportState()
 {
   int pred= pvm_getinst("anillo-chord",predecessor);
   int succ= pvm_getinst("anillo-chord",successor);
+  int type=0;
 
   pvm_initsend( PvmDataDefault );
+  pvm_pkint(&type,1,1);
   pvm_pkint(&mynode,1,1);
   pvm_pkint(&pred,1,1);
   pvm_pkint(&succ,1,1);
@@ -290,6 +295,26 @@ void reportState()
 
 }
 
+
+
+void reportEntering()
+{
+  int type=1;
+  pvm_initsend( PvmDataDefault );
+  pvm_pkint(&type,1,1);
+  pvm_pkint(&mynode,1,1);
+  pvm_send(pvm_parent(), REPORT);
+}
+
+
+void reportExiting()
+{
+  int type=2;
+  pvm_initsend( PvmDataDefault );
+  pvm_pkint(&type,1,1);
+  pvm_pkint(&mynode,1,1);
+  pvm_send(pvm_parent(), REPORT);
+}
  
 /************************
  Atender la peticion del token
