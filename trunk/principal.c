@@ -24,13 +24,14 @@ int main(int argc, char *argv[])
   int mytid;                  /* mi task id */
   int tids[NPROC];            /* array de task id */
   int info, msg;
-  int i;
+  int i,nproc,max;
 
   int predecessor, successor, node;
 
   /* identificarme en pvm */
   mytid = pvm_mytid();
-
+max=10;
+nproc=NPROC;
   /***************/
   /* Expansión de procesos nodo (creación del anillo) */
   pvm_catchout(stdout);
@@ -41,7 +42,7 @@ int main(int argc, char *argv[])
     return 1;
   }
 
-
+  srand(-time(0));
   struct timeval tmout; /* timeout para la rutina trecv */
   tmout.tv_sec=0; /* indica que trecv esperara estos segundos */
   tmout.tv_usec=100000; /* y estos microsegundos */
@@ -49,6 +50,11 @@ int main(int argc, char *argv[])
   /*************************************/
   /*** Recabar y mostrar información ***/
   for(i=0; i<40; i++) {
+	  if( nproc<max && (rand() < RAND_MAX/4) ){
+	  	printf("Spameando un nodo\n");
+	  	pvm_spawn("nodo", (char**)0, 0, "", 1, tids);
+	  	nproc++;
+	  }
     info = pvm_trecv( -1, REPORT, &tmout );
     if ( info > 0 ) {
       i=0; /* Pone el contador a cero, para que no deje de recibir informacion */
@@ -68,6 +74,7 @@ int main(int argc, char *argv[])
         case 2:
           pvm_upkint(&node,1,1);
           printf("El nodo %d sale del anillo\n", node);
+          nproc--;
           break;
         }
     }
