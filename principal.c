@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
 {
   int mytid;                  /* mi task id */
   int tids[NPROC];            /* array de task id */
-  int info;
+  int info, msg;
   int i;
 
   int predecessor, successor, node;
@@ -51,11 +51,24 @@ int main(int argc, char *argv[])
   for(i=0; i<130; i++) {
     info = pvm_trecv( -1, REPORT, &tmout );
     if ( info > 0 ) {
-      pvm_upkint(&node,1,1);
-      pvm_upkint(&predecessor,1,1);
-      pvm_upkint(&successor,1,1);
-
-      printf("Nodo%d\t-->\tNodo%d\t-->\tNodo%d\n", predecessor, node, successor);
+      pvm_upkint(&msg,1,1);
+      switch (msg) {
+        case 0:
+          pvm_upkint(&node,1,1);
+          pvm_upkint(&predecessor,1,1);
+          pvm_upkint(&successor,1,1);
+          
+          printf("Nodo%d\t-->\tNodo%d\t-->\tNodo%d\n", predecessor, node, successor);
+          break;
+        case 1:
+          pvm_upkint(&node,1,1);
+          printf("El nodo %d entra al anillo\n", node);
+          break;
+        case 2:
+          pvm_upkint(&node,1,1);
+          printf("El nodo %d sale del anillo\n", node);
+          break;
+        }
     }
 
   }
