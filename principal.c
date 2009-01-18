@@ -48,9 +48,10 @@ int main(int argc, char *argv[])
 
   /*************************************/
   /*** Recabar y mostrar información ***/
-  for(i=0; i<130; i++) {
+  for(i=0; i<40; i++) {
     info = pvm_trecv( -1, REPORT, &tmout );
     if ( info > 0 ) {
+      i=0; /* Pone el contador a cero, para que no deje de recibir informacion */
       pvm_upkint(&msg,1,1);
       switch (msg) {
         case 0:
@@ -72,7 +73,7 @@ int main(int argc, char *argv[])
     }
 
   }
-
+  printf("Se ha dejado de recibir información del anillo.\n");
 
 
   /***************************/

@@ -30,18 +30,18 @@ void mainloop( );
 void ptransmit(int, int);
 void pfound(int);
 
+int findNext();
 void stabilize( );
 
-int findNext();
 void reportState();
+void reportEntering();
+void reportExiting();
 
 int mytid;                  /* mi task id */
 int mynode;                 /* mi numero en el anillo */
 int predecessor;
 int successor;
 
-void reportEntering();
-void reportExiting();
 
 
 
@@ -78,9 +78,9 @@ int main(int argc, char *argv[])
     successor = findNext();
     
     
-    /******************************/
-    /* Bucle de trabajo del nodo durante X ciclos */
-    int cicles= 5; /* Luego lo pondremos aleatorio */
+    /***************************************/
+    /* El nodo trabajará durante un numero aleatorio de ciclos */
+    int cicles= 20.0*rand()/RAND_MAX; 
     for(i=0; i<cicles; i++) {
       mainloop();
     }
