@@ -101,29 +101,8 @@ int main(int argc, char *argv[])
   }
   printf("Se ha dejado de recibir información del anillo.\n");
 
-
-  /***************************/
-  /*** Peticion de claves  ***/
-
-  /*
-
-    printf("Introduce clave a buscar:");
-    scanf("%d",&token);
-
-    pvm_initsend( PvmDataDefault );
-    msg = KEY;
-    pvm_pkint( &msg, 1, 1);
-    pvm_pkint( &token, 1, 1);
-    pvm_send( tids[0], NOTIFY );
-
-    printf("petición de token enviada\n");
-  */
-
   /****************/
   /* Programa terminado, salir de pvm */
-  /* pvm_lvgroup( "anillo-chord" ); */
-  //printf("Finalizando nodos...\n");
-  //for(i=0;i<NPROC-1;i++) pvm_kill(tids[i]);
   printf("Proceso padre saliendo...\n");
   pvm_exit();
   return 0;

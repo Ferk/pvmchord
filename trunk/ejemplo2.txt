@@ -1311,4 +1311,60 @@ Nodo81	-->	Nodo0	-->	Nodo2
 Nodo28	-->	Nodo29	-->	Nodo32
 Nodo27	-->	Nodo28	-->	Nodo29
 Nodo14	-->	Nodo27	-->	Nodo28
-Nodo81	-->	N
+Nodo81	-->	Nodo0	-->	Nodo2
+ ** 0 transmite petición de la clave 7 **
+()---> El nodo 0 sale del anillo
+[t402df] EOF
+Nodo28	-->	Nodo29	-->	Nodo32
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo28	-->	Nodo29	-->	Nodo32
+Nodo14	-->	Nodo27	-->	Nodo28
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo28	-->	Nodo29	-->	Nodo32
+Nodo14	-->	Nodo27	-->	Nodo28
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo14	-->	Nodo27	-->	Nodo28
+Nodo28	-->	Nodo29	-->	Nodo32
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo28	-->	Nodo29	-->	Nodo32
+Nodo14	-->	Nodo27	-->	Nodo28
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo14	-->	Nodo27	-->	Nodo28
+Nodo28	-->	Nodo29	-->	Nodo32
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo28	-->	Nodo29	-->	Nodo32
+*null*	-->	Nodo27	-->	Nodo28
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo28	-->	Nodo29	-->	Nodo32
+*null*	-->	Nodo27	-->	Nodo28
+Nodo28	-->	Nodo29	-->	Nodo32
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo27	-->	Nodo28	-->	Nodo29
+*null*	-->	Nodo27	-->	Nodo28
+()---> El nodo 27 sale del anillo
+[t402e1] EOF
+Nodo28	-->	Nodo29	-->	Nodo32
+*null*	-->	Nodo28	-->	Nodo29
+Nodo28	-->	Nodo29	-->	Nodo32
+*null*	-->	Nodo28	-->	Nodo29
+Nodo28	-->	Nodo29	-->	Nodo32
+*null*	-->	Nodo28	-->	Nodo29
+Nodo28	-->	Nodo29	-->	*null*
+Nodo28	-->	Nodo29	-->	Nodo28
+()---> El nodo 28 sale del anillo
+[t402da] EOF
+*null*	-->	Nodo29	-->	Nodo29
+*null*	-->	Nodo29	-->	Nodo29
+*null*	-->	Nodo29	-->	Nodo29
+*null*	-->	Nodo29	-->	Nodo29
+***¡¡¡Se encontró en 29 la clave 5 buscada!!!***
+*null*	-->	Nodo29	-->	Nodo29
+*null*	-->	Nodo29	-->	Nodo29
+*null*	-->	Nodo29	-->	Nodo29
+*null*	-->	Nodo29	-->	Nodo29
+*null*	-->	Nodo29	-->	Nodo29
+()---> El nodo 29 sale del anillo
+[t402d9] EOF
+Se ha dejado de recibir información del anillo.
+Proceso padre saliendo...
