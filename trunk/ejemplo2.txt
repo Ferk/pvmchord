@@ -1,0 +1,1314 @@
+gcc -g -Wall -ggdb -I/usr/include/  -o principal principal.c -lpvm3 -lgpvm3
+mv principal /home/ferk/pvm3/bin/LINUX64
+gcc -g -Wall -ggdb -I/usr/include/  -o nodo nodo.c -lpvm3 -lgpvm3
+mv nodo /home/ferk/pvm3/bin/LINUX64
+cd /home/ferk/pvm3/bin/LINUX64 && \
+	./principal 
+[t402bd] BEGIN
+[t402be] BEGIN
+[t402bf] BEGIN
+[t402c0] BEGIN
+[t402c1] BEGIN
+[t402c2] BEGIN
+[t402c3] BEGIN
+[t402c4] BEGIN
+[t402c5] BEGIN
+[t402c6] BEGIN
+[t402c7] BEGIN
+[t402c8] BEGIN
+[t402c9] BEGIN
+[t402ca] BEGIN
+[t402cb] BEGIN
+[t402cc] BEGIN
+[t402cd] BEGIN
+[t402ce] BEGIN
+[t402cf] BEGIN
+[t402d0] BEGIN
+[t402d1] BEGIN
+[t402d2] BEGIN
+[t402d3] BEGIN
+[t402d4] BEGIN
+[t402d5] BEGIN
+[t402d6] BEGIN
+[t402d7] BEGIN
+[t402d8] BEGIN
+[t402d9] BEGIN
+[t402da] BEGIN
+[t402db] BEGIN
+[t402dc] BEGIN
+()<--- El nodo 0 entra al anillo
+()<--- El nodo 1 entra al anillo
+()<--- El nodo 2 entra al anillo
+()<--- El nodo 3 entra al anillo
+()<--- El nodo 4 entra al anillo
+()<--- El nodo 5 entra al anillo
+()<--- El nodo 6 entra al anillo
+()<--- El nodo 7 entra al anillo
+()<--- El nodo 8 entra al anillo
+()<--- El nodo 9 entra al anillo
+()<--- El nodo 10 entra al anillo
+()<--- El nodo 11 entra al anillo
+()<--- El nodo 12 entra al anillo
+()<--- El nodo 13 entra al anillo
+()<--- El nodo 14 entra al anillo
+()<--- El nodo 15 entra al anillo
+*null*	-->	Nodo0	-->	Nodo1
+()<--- El nodo 17 entra al anillo
+*null*	-->	Nodo1	-->	Nodo2
+()<--- El nodo 21 entra al anillo
+*null*	-->	Nodo2	-->	Nodo3
+()<--- El nodo 25 entra al anillo
+()<--- El nodo 28 entra al anillo
+*null*	-->	Nodo3	-->	Nodo4
+()<--- El nodo 27 entra al anillo
+()<--- El nodo 16 entra al anillo
+()<--- El nodo 20 entra al anillo
+()<--- El nodo 29 entra al anillo
+()<--- El nodo 19 entra al anillo
+()<--- El nodo 22 entra al anillo
+()<--- El nodo 23 entra al anillo
+()<--- El nodo 30 entra al anillo
+()<--- El nodo 26 entra al anillo
+()<--- El nodo 18 entra al anillo
+()<--- El nodo 24 entra al anillo
+()<--- El nodo 31 entra al anillo
+*null*	-->	Nodo4	-->	Nodo5
+*null*	-->	Nodo5	-->	Nodo6
+*null*	-->	Nodo6	-->	Nodo7
+*null*	-->	Nodo8	-->	Nodo9
+*null*	-->	Nodo10	-->	Nodo11
+*null*	-->	Nodo9	-->	Nodo10
+*null*	-->	Nodo7	-->	Nodo8
+*null*	-->	Nodo11	-->	Nodo12
+*null*	-->	Nodo12	-->	Nodo13
+*null*	-->	Nodo13	-->	Nodo14
+*null*	-->	Nodo14	-->	Nodo15
+*null*	-->	Nodo15	-->	Nodo16
+*null*	-->	Nodo17	-->	Nodo18
+*null*	-->	Nodo21	-->	Nodo22
+*null*	-->	Nodo25	-->	Nodo26
+*null*	-->	Nodo28	-->	Nodo29
+()---> El nodo 10 sale del anillo
+*null*	-->	Nodo27	-->	Nodo28
+[t402c8] EOF
+()---> El nodo 11 sale del anillo
+*null*	-->	Nodo16	-->	Nodo17
+*null*	-->	Nodo20	-->	Nodo21
+*null*	-->	Nodo29	-->	Nodo30
+[t402c7] EOF
+*null*	-->	Nodo19	-->	Nodo20
+Spawneando un nodo
+[t402dd] BEGIN
+*null*	-->	Nodo22	-->	Nodo23
+*null*	-->	Nodo23	-->	Nodo24
+*null*	-->	Nodo30	-->	Nodo31
+*null*	-->	Nodo26	-->	Nodo27
+*null*	-->	Nodo18	-->	Nodo19
+*null*	-->	Nodo24	-->	Nodo25
+*null*	-->	Nodo31	-->	Nodo0
+()<--- El nodo 10 entra al anillo
+Spawneando un nodo
+[t402de] BEGIN
+*null*	-->	Nodo10	-->	Nodo12
+()<--- El nodo 11 entra al anillo
+*null*	-->	Nodo11	-->	Nodo12
+*null*	-->	Nodo3	-->	Nodo4
+*null*	-->	Nodo6	-->	Nodo7
+*null*	-->	Nodo4	-->	Nodo5
+*null*	-->	Nodo9	-->	Nodo10
+*null*	-->	Nodo1	-->	Nodo2
+*null*	-->	Nodo0	-->	Nodo1
+*null*	-->	Nodo5	-->	Nodo6
+*null*	-->	Nodo2	-->	Nodo3
+Nodo3	-->	Nodo4	-->	Nodo5
+*null*	-->	Nodo3	-->	Nodo4
+*null*	-->	Nodo28	-->	Nodo29
+*null*	-->	Nodo8	-->	Nodo9
+*null*	-->	Nodo7	-->	Nodo8
+*null*	-->	Nodo13	-->	Nodo14
+*null*	-->	Nodo14	-->	Nodo15
+*null*	-->	Nodo16	-->	Nodo17
+*null*	-->	Nodo22	-->	Nodo23
+*null*	-->	Nodo20	-->	Nodo21
+*null*	-->	Nodo21	-->	Nodo22
+*null*	-->	Nodo23	-->	Nodo24
+*null*	-->	Nodo27	-->	Nodo28
+*null*	-->	Nodo12	-->	Nodo13
+*null*	-->	Nodo19	-->	Nodo20
+*null*	-->	Nodo25	-->	Nodo26
+*null*	-->	Nodo29	-->	Nodo30
+*null*	-->	Nodo15	-->	Nodo16
+*null*	-->	Nodo18	-->	Nodo19
+*null*	-->	Nodo17	-->	Nodo18
+*null*	-->	Nodo24	-->	Nodo25
+*null*	-->	Nodo31	-->	Nodo0
+*null*	-->	Nodo10	-->	Nodo12
+*null*	-->	Nodo30	-->	Nodo31
+*null*	-->	Nodo26	-->	Nodo27
+Nodo4	-->	Nodo5	-->	Nodo6
+*null*	-->	Nodo6	-->	Nodo7
+*null*	-->	Nodo11	-->	Nodo12
+()---> El nodo 0 sale del anillo
+[t402bf] EOF
+*null*	-->	Nodo1	-->	Nodo2
+Nodo3	-->	Nodo4	-->	Nodo5
+()---> El nodo 27 sale del anillo
+[t402d8] EOF
+()---> El nodo 21 sale del anillo
+[t402d3] EOF
+Nodo4	-->	Nodo5	-->	Nodo6
+*null*	-->	Nodo9	-->	Nodo10
+Spawneando un nodo
+[t402df] BEGIN
+*null*	-->	Nodo14	-->	Nodo15
+Spawneando un nodo
+[t402e0] BEGIN
+*null*	-->	Nodo16	-->	Nodo17
+Spawneando un nodo
+[t402e1] BEGIN
+*null*	-->	Nodo19	-->	Nodo20
+*null*	-->	Nodo29	-->	Nodo30
+*null*	-->	Nodo13	-->	Nodo14
+*null*	-->	Nodo8	-->	Nodo9
+()<--- El nodo 0 entra al anillo
+Nodo6	-->	Nodo7	-->	Nodo8
+*null*	-->	Nodo28	-->	Nodo29
+*null*	-->	Nodo22	-->	Nodo23
+*null*	-->	Nodo25	-->	Nodo26
+Nodo5	-->	Nodo6	-->	Nodo7
+*null*	-->	Nodo15	-->	Nodo16
+*null*	-->	Nodo23	-->	Nodo24
+*null*	-->	Nodo17	-->	Nodo18
+*null*	-->	Nodo24	-->	Nodo25
+*null*	-->	Nodo18	-->	Nodo19
+*null*	-->	Nodo12	-->	Nodo13
+*null*	-->	Nodo30	-->	Nodo31
+*** 30 Inicializa petición de la clave 10 ***
+*null*	-->	Nodo10	-->	Nodo12
+()<--- El nodo 21 entra al anillo
+()<--- El nodo 27 entra al anillo
+*null*	-->	Nodo31	-->	Nodo0
+*null*	-->	Nodo26	-->	Nodo28
+*null*	-->	Nodo0	-->	Nodo1
+*null*	-->	Nodo21	-->	Nodo22
+*null*	-->	Nodo27	-->	Nodo28
+Nodo8	-->	Nodo9	-->	Nodo10
+Nodo13	-->	Nodo14	-->	Nodo15
+Nodo15	-->	Nodo16	-->	Nodo17
+Nodo12	-->	Nodo13	-->	Nodo14
+Nodo28	-->	Nodo29	-->	Nodo30
+Nodo7	-->	Nodo8	-->	Nodo9
+Nodo6	-->	Nodo7	-->	Nodo8
+Nodo5	-->	Nodo6	-->	Nodo7
+Nodo14	-->	Nodo15	-->	Nodo16
+Nodo16	-->	Nodo17	-->	Nodo18
+Nodo22	-->	Nodo23	-->	Nodo24
+Nodo23	-->	Nodo24	-->	Nodo25
+Nodo17	-->	Nodo18	-->	Nodo19
+Nodo10	-->	Nodo12	-->	Nodo13
+Nodo29	-->	Nodo30	-->	Nodo31
+Nodo24	-->	Nodo25	-->	Nodo26
+Nodo30	-->	Nodo31	-->	Nodo0
+***¡¡¡Se encontró en 31 la clave 10 buscada!!!***
+Nodo8	-->	Nodo9	-->	Nodo10
+Nodo13	-->	Nodo14	-->	Nodo15
+Nodo15	-->	Nodo16	-->	Nodo17
+Nodo12	-->	Nodo13	-->	Nodo14
+Nodo7	-->	Nodo8	-->	Nodo9
+Nodo6	-->	Nodo7	-->	Nodo8
+Nodo16	-->	Nodo17	-->	Nodo18
+Nodo23	-->	Nodo24	-->	Nodo25
+Nodo14	-->	Nodo15	-->	Nodo16
+Nodo29	-->	Nodo30	-->	Nodo31
+Nodo15	-->	Nodo16	-->	Nodo17
+Nodo7	-->	Nodo8	-->	Nodo9
+Nodo13	-->	Nodo14	-->	Nodo15
+Nodo14	-->	Nodo15	-->	Nodo16
+Nodo14	-->	Nodo15	-->	Nodo16
+*null*	-->	Nodo2	-->	Nodo3
+*null*	-->	Nodo20	-->	*null*
+Nodo2	-->	Nodo3	-->	Nodo4
+*null*	-->	Nodo0	-->	Nodo1
+*null*	-->	Nodo1	-->	Nodo2
+*null*	-->	Nodo11	-->	Nodo12
+Nodo4	-->	Nodo5	-->	Nodo6
+Nodo18	-->	Nodo19	-->	Nodo20
+Nodo30	-->	Nodo31	-->	Nodo0
+Nodo19	-->	Nodo20	-->	Nodo21
+Nodo9	-->	Nodo10	-->	Nodo12
+Nodo5	-->	Nodo6	-->	Nodo7
+()---> El nodo 31 sale del anillo
+Nodo31	-->	Nodo0	-->	Nodo1
+[t402dc] EOF
+Nodo11	-->	Nodo12	-->	Nodo13
+Nodo17	-->	Nodo18	-->	Nodo19
+Nodo6	-->	Nodo7	-->	Nodo8
+Nodo8	-->	Nodo9	-->	Nodo10
+Nodo12	-->	Nodo13	-->	Nodo14
+Nodo18	-->	Nodo19	-->	Nodo20
+*** 15 Inicializa petición de la clave 26 ***
+Nodo9	-->	Nodo10	-->	Nodo12
+Nodo19	-->	Nodo20	-->	Nodo21
+Nodo10	-->	Nodo12	-->	Nodo13
+*null*	-->	Nodo21	-->	Nodo22
+*null*	-->	Nodo28	-->	Nodo29
+Nodo25	-->	Nodo26	-->	Nodo28
+Nodo16	-->	Nodo17	-->	Nodo18
+Nodo13	-->	Nodo14	-->	Nodo15
+*null*	-->	Nodo22	-->	Nodo23
+()---> El nodo 23 sale del anillo
+[t402d4] EOF
+Nodo7	-->	Nodo8	-->	Nodo9
+Nodo17	-->	Nodo18	-->	Nodo19
+Nodo12	-->	Nodo13	-->	Nodo14
+Nodo8	-->	Nodo9	-->	Nodo10
+Nodo18	-->	Nodo19	-->	Nodo20
+Nodo28	-->	Nodo29	-->	Nodo30
+Nodo24	-->	Nodo25	-->	Nodo26
+Nodo15	-->	Nodo16	-->	Nodo17
+Nodo10	-->	Nodo12	-->	Nodo13
+Nodo19	-->	Nodo20	-->	Nodo21
+()---> El nodo 25 sale del anillo
+Nodo25	-->	Nodo26	-->	Nodo28
+[t402d7] EOF
+Nodo13	-->	Nodo14	-->	Nodo15
+Nodo16	-->	Nodo17	-->	Nodo18
+Nodo20	-->	Nodo21	-->	Nodo22
+()---> El nodo 26 sale del anillo
+Nodo26	-->	Nodo28	-->	Nodo29
+[t402d6] EOF
+Nodo12	-->	Nodo13	-->	Nodo14
+Nodo17	-->	Nodo18	-->	Nodo19
+Nodo14	-->	Nodo15	-->	Nodo16
+Nodo21	-->	Nodo22	-->	Nodo24
+Nodo18	-->	Nodo19	-->	Nodo20
+Nodo29	-->	Nodo30	-->	Nodo0
+Nodo28	-->	Nodo29	-->	Nodo30
+*null*	-->	Nodo27	-->	Nodo28
+Nodo15	-->	Nodo16	-->	Nodo17
+ ** 16 transmite petición de la clave 26 **
+Nodo19	-->	Nodo20	-->	Nodo21
+Nodo16	-->	Nodo17	-->	Nodo18
+*null*	-->	Nodo28	-->	Nodo29
+Nodo13	-->	Nodo14	-->	Nodo15
+Nodo20	-->	Nodo21	-->	Nodo22
+Nodo17	-->	Nodo18	-->	Nodo19
+Nodo14	-->	Nodo15	-->	Nodo16
+ ** 15 transmite petición de la clave 26 **
+Nodo18	-->	Nodo19	-->	Nodo20
+Nodo21	-->	Nodo22	-->	Nodo24
+Nodo28	-->	Nodo29	-->	Nodo30
+Nodo29	-->	Nodo30	-->	Nodo0
+Nodo15	-->	Nodo16	-->	Nodo17
+*** 16 Inicializa petición de la clave 25 ***
+Nodo19	-->	Nodo20	-->	Nodo21
+Nodo16	-->	Nodo17	-->	Nodo18
+*null*	-->	Nodo24	-->	Nodo27
+()---> El nodo 17 sale del anillo
+[t402cf] EOF
+Nodo17	-->	Nodo18	-->	Nodo19
+Nodo20	-->	Nodo21	-->	Nodo22
+Nodo14	-->	Nodo15	-->	Nodo16
+Nodo18	-->	Nodo19	-->	Nodo20
+Nodo21	-->	Nodo22	-->	Nodo24
+Nodo19	-->	Nodo20	-->	Nodo21
+*null*	-->	Nodo18	-->	Nodo19
+Nodo20	-->	Nodo21	-->	Nodo22
+Nodo18	-->	Nodo19	-->	Nodo20
+Nodo19	-->	Nodo20	-->	Nodo21
+Nodo18	-->	Nodo19	-->	Nodo20
+Nodo3	-->	Nodo4	-->	Nodo5
+Nodo1	-->	Nodo2	-->	Nodo3
+Nodo2	-->	Nodo3	-->	Nodo4
+Nodo0	-->	Nodo1	-->	Nodo2
+Nodo1	-->	Nodo2	-->	Nodo3
+Nodo2	-->	Nodo3	-->	Nodo4
+Nodo3	-->	Nodo4	-->	Nodo5
+Nodo4	-->	Nodo5	-->	Nodo6
+()---> El nodo 4 sale del anillo
+[t402c2] EOF
+*null*	-->	Nodo0	-->	Nodo1
+Nodo5	-->	Nodo6	-->	Nodo7
+Nodo1	-->	Nodo2	-->	Nodo3
+Nodo0	-->	Nodo1	-->	Nodo2
+*null*	-->	Nodo5	-->	Nodo6
+Nodo29	-->	Nodo30	-->	Nodo0
+Nodo6	-->	Nodo7	-->	Nodo8
+Nodo5	-->	Nodo6	-->	Nodo7
+Nodo30	-->	Nodo0	-->	Nodo1
+Nodo0	-->	Nodo1	-->	Nodo2
+Nodo7	-->	Nodo8	-->	Nodo9
+Nodo6	-->	Nodo7	-->	Nodo8
+Nodo9	-->	Nodo10	-->	Nodo12
+Nodo8	-->	Nodo9	-->	Nodo10
+Nodo7	-->	Nodo8	-->	Nodo9
+Nodo9	-->	Nodo10	-->	Nodo12
+Nodo10	-->	Nodo12	-->	Nodo13
+()---> El nodo 12 sale del anillo
+[t402c9] EOF
+*null*	-->	Nodo13	-->	Nodo14
+Nodo8	-->	Nodo9	-->	Nodo10
+Nodo13	-->	Nodo14	-->	Nodo15
+Nodo22	-->	Nodo24	-->	Nodo27
+*null*	-->	Nodo27	-->	Nodo28
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo21	-->	Nodo22	-->	Nodo24
+Nodo22	-->	Nodo24	-->	Nodo27
+Nodo28	-->	Nodo29	-->	Nodo30
+Nodo24	-->	Nodo27	-->	Nodo28
+Nodo20	-->	Nodo21	-->	Nodo22
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo21	-->	Nodo22	-->	Nodo24
+Nodo29	-->	Nodo30	-->	Nodo0
+Nodo30	-->	Nodo0	-->	Nodo1
+Nodo28	-->	Nodo29	-->	Nodo30
+Nodo22	-->	Nodo24	-->	Nodo27
+Nodo19	-->	Nodo20	-->	Nodo21
+Nodo24	-->	Nodo27	-->	Nodo28
+Nodo20	-->	Nodo21	-->	Nodo22
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo29	-->	Nodo30	-->	Nodo0
+Nodo21	-->	Nodo22	-->	Nodo24
+Nodo15	-->	Nodo16	-->	*null*
+Nodo22	-->	Nodo24	-->	Nodo27
+Nodo28	-->	Nodo29	-->	Nodo30
+Nodo19	-->	Nodo20	-->	Nodo21
+Nodo24	-->	Nodo27	-->	Nodo28
+Nodo20	-->	Nodo21	-->	Nodo22
+Nodo14	-->	Nodo15	-->	Nodo16
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo15	-->	Nodo16	-->	Nodo17
+ ** 16 transmite petición de la clave 26 **
+Nodo21	-->	Nodo22	-->	Nodo24
+Nodo22	-->	Nodo24	-->	Nodo27
+Nodo28	-->	Nodo29	-->	Nodo30
+Nodo24	-->	Nodo27	-->	Nodo28
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo15	-->	Nodo16	-->	Nodo17
+*null*	-->	Nodo18	-->	Nodo19
+Nodo18	-->	Nodo19	-->	Nodo20
+Nodo19	-->	Nodo20	-->	Nodo21
+Nodo20	-->	Nodo21	-->	Nodo22
+Nodo21	-->	Nodo22	-->	Nodo24
+Nodo22	-->	Nodo24	-->	Nodo27
+Nodo24	-->	Nodo27	-->	Nodo28
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo24	-->	Nodo27	-->	Nodo28
+Nodo22	-->	Nodo24	-->	Nodo27
+*null*	-->	Nodo11	-->	Nodo13
+Nodo2	-->	Nodo3	-->	*null*
+Nodo1	-->	Nodo2	-->	Nodo3
+Nodo2	-->	Nodo3	-->	Nodo5
+Nodo0	-->	Nodo1	-->	Nodo2
+Nodo1	-->	Nodo2	-->	Nodo3
+Nodo30	-->	Nodo0	-->	Nodo1
+Nodo0	-->	Nodo1	-->	Nodo2
+Nodo29	-->	Nodo30	-->	Nodo0
+Nodo30	-->	Nodo0	-->	Nodo1
+Nodo28	-->	Nodo29	-->	Nodo30
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo26	-->	Nodo27	-->	Nodo28
+Nodo2	-->	Nodo3	-->	Nodo5
+Nodo1	-->	Nodo2	-->	Nodo3
+Nodo0	-->	Nodo1	-->	Nodo2
+()---> El nodo 1 sale del anillo
+[t402c1] EOF
+*null*	-->	Nodo5	-->	Nodo6
+Nodo5	-->	Nodo6	-->	Nodo7
+()---> El nodo 8 sale del anillo
+[t402c6] EOF
+Nodo6	-->	Nodo7	-->	*null*
+Nodo2	-->	Nodo3	-->	Nodo5
+Nodo3	-->	Nodo5	-->	Nodo6
+()---> El nodo 5 sale del anillo
+[t402be] EOF
+Nodo5	-->	Nodo6	-->	Nodo7
+*null*	-->	Nodo2	-->	Nodo3
+()---> El nodo 2 sale del anillo
+Nodo6	-->	Nodo7	-->	Nodo9
+[t402c0] EOF
+Nodo9	-->	Nodo10	-->	*null*
+*null*	-->	Nodo9	-->	Nodo10
+Nodo9	-->	Nodo10	-->	Nodo11
+()---> El nodo 14 sale del anillo
+[t402cb] EOF
+*null*	-->	Nodo15	-->	Nodo16
+ ** 15 transmite petición de la clave 26 **
+Nodo15	-->	Nodo16	-->	Nodo17
+Nodo17	-->	Nodo18	-->	Nodo19
+Nodo18	-->	Nodo19	-->	Nodo20
+Nodo19	-->	Nodo20	-->	Nodo21
+Nodo20	-->	Nodo21	-->	Nodo22
+Nodo21	-->	Nodo22	-->	Nodo24
+Nodo23	-->	Nodo24	-->	Nodo27
+Nodo9	-->	Nodo10	-->	Nodo11
+*null*	-->	Nodo13	-->	Nodo15
+*null*	-->	Nodo11	-->	Nodo13
+()---> El nodo 11 sale del anillo
+[t402de] EOF
+Nodo29	-->	Nodo30	-->	Nodo0
+Nodo28	-->	Nodo29	-->	Nodo30
+Nodo30	-->	Nodo0	-->	*null*
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo24	-->	Nodo27	-->	Nodo28
+Nodo32	-->	Nodo0	-->	Nodo3
+*null*	-->	Nodo6	-->	Nodo7
+*null*	-->	Nodo3	-->	*null*
+*null*	-->	Nodo3	-->	Nodo6
+Nodo6	-->	Nodo7	-->	Nodo9
+*null*	-->	Nodo9	-->	Nodo10
+Nodo9	-->	Nodo10	-->	Nodo13
+*null*	-->	Nodo15	-->	Nodo16
+Nodo17	-->	Nodo18	-->	Nodo19
+Nodo18	-->	Nodo19	-->	Nodo20
+Nodo19	-->	Nodo20	-->	Nodo21
+Nodo18	-->	Nodo19	-->	Nodo20
+Nodo28	-->	Nodo29	-->	Nodo30
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo24	-->	Nodo27	-->	Nodo28
+Nodo22	-->	Nodo24	-->	Nodo27
+Nodo29	-->	Nodo30	-->	Nodo0
+Nodo28	-->	Nodo29	-->	Nodo30
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo26	-->	Nodo27	-->	Nodo28
+Nodo32	-->	Nodo0	-->	Nodo3
+*null*	-->	Nodo3	-->	Nodo6
+*null*	-->	Nodo6	-->	Nodo7
+Nodo6	-->	Nodo7	-->	Nodo9
+Nodo7	-->	Nodo9	-->	Nodo10
+Nodo20	-->	Nodo21	-->	Nodo22
+Nodo15	-->	Nodo16	-->	Nodo17
+*null*	-->	Nodo13	-->	Nodo15
+Nodo17	-->	Nodo18	-->	Nodo19
+Nodo21	-->	Nodo22	-->	Nodo24
+*null*	-->	Nodo15	-->	Nodo16
+Nodo18	-->	Nodo19	-->	Nodo20
+Nodo19	-->	Nodo20	-->	Nodo21
+Nodo33	-->	Nodo0	-->	Nodo3
+Nodo0	-->	Nodo3	-->	Nodo6
+Nodo3	-->	Nodo6	-->	Nodo7
+Nodo6	-->	Nodo7	-->	Nodo9
+Nodo36	-->	Nodo0	-->	Nodo3
+Nodo7	-->	Nodo9	-->	Nodo10
+Nodo0	-->	Nodo3	-->	Nodo6
+Nodo3	-->	Nodo6	-->	Nodo7
+Nodo6	-->	Nodo7	-->	Nodo9
+Nodo37	-->	Nodo0	-->	Nodo3
+Nodo0	-->	Nodo3	-->	Nodo6
+Nodo3	-->	Nodo6	-->	Nodo7
+Nodo34	-->	Nodo0	-->	Nodo3
+Nodo0	-->	Nodo3	-->	Nodo6
+Nodo3	-->	Nodo6	-->	Nodo7
+Nodo35	-->	Nodo0	-->	Nodo3
+Nodo0	-->	Nodo3	-->	Nodo6
+Nodo40	-->	Nodo0	-->	Nodo3
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo29	-->	Nodo30	-->	Nodo0
+Nodo28	-->	Nodo29	-->	Nodo30
+Nodo24	-->	Nodo27	-->	Nodo28
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo28	-->	Nodo29	-->	Nodo30
+Nodo22	-->	Nodo24	-->	Nodo27
+Nodo26	-->	Nodo27	-->	Nodo28
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo9	-->	Nodo10	-->	Nodo13
+Nodo7	-->	Nodo9	-->	Nodo10
+Nodo6	-->	Nodo7	-->	Nodo9
+Nodo3	-->	Nodo6	-->	Nodo7
+Nodo0	-->	Nodo3	-->	Nodo6
+Nodo41	-->	Nodo0	-->	Nodo3
+()---> El nodo 13 sale del anillo
+[t402ca] EOF
+Nodo15	-->	Nodo16	-->	Nodo17
+Nodo20	-->	Nodo21	-->	Nodo22
+ ** 16 transmite petición de la clave 26 **
+Nodo19	-->	Nodo20	-->	Nodo21
+Nodo17	-->	Nodo18	-->	Nodo19
+*null*	-->	Nodo15	-->	Nodo16
+ ** 15 transmite petición de la clave 26 **
+Nodo15	-->	Nodo16	-->	Nodo17
+Nodo20	-->	Nodo21	-->	Nodo22
+Nodo18	-->	Nodo19	-->	Nodo20
+Nodo21	-->	Nodo22	-->	Nodo24
+Nodo17	-->	Nodo18	-->	Nodo19
+Nodo19	-->	Nodo20	-->	Nodo21
+Nodo22	-->	Nodo24	-->	Nodo27
+Nodo15	-->	Nodo16	-->	Nodo17
+Nodo20	-->	Nodo21	-->	Nodo22
+Nodo18	-->	Nodo19	-->	Nodo20
+Nodo24	-->	Nodo27	-->	Nodo28
+Nodo17	-->	Nodo18	-->	Nodo19
+Nodo19	-->	Nodo20	-->	Nodo21
+Nodo18	-->	Nodo19	-->	Nodo20
+*null*	-->	Nodo15	-->	Nodo16
+Nodo15	-->	Nodo16	-->	Nodo17
+Nodo17	-->	Nodo18	-->	Nodo19
+Nodo28	-->	Nodo29	-->	Nodo30
+Nodo29	-->	Nodo30	-->	Nodo0
+Nodo18	-->	Nodo19	-->	Nodo20
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo24	-->	Nodo27	-->	Nodo28
+Nodo28	-->	Nodo29	-->	Nodo30
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo6	-->	Nodo7	-->	Nodo9
+Nodo0	-->	Nodo3	-->	Nodo6
+Nodo3	-->	Nodo6	-->	Nodo7
+Nodo7	-->	Nodo9	-->	Nodo10
+Nodo9	-->	Nodo10	-->	*null*
+Nodo38	-->	Nodo0	-->	Nodo3
+Nodo6	-->	Nodo7	-->	Nodo9
+Nodo0	-->	Nodo3	-->	Nodo6
+Nodo3	-->	Nodo6	-->	Nodo7
+Nodo7	-->	Nodo9	-->	Nodo10
+Nodo9	-->	Nodo10	-->	Nodo11
+Nodo42	-->	Nodo0	-->	Nodo3
+Nodo3	-->	Nodo6	-->	Nodo7
+Nodo7	-->	Nodo9	-->	Nodo10
+Nodo0	-->	Nodo3	-->	Nodo6
+Nodo6	-->	Nodo7	-->	Nodo9
+Nodo5	-->	Nodo6	-->	Nodo7
+Nodo1	-->	Nodo3	-->	Nodo6
+Nodo39	-->	Nodo0	-->	Nodo3
+Nodo21	-->	Nodo22	-->	Nodo24
+Nodo22	-->	Nodo24	-->	Nodo27
+Nodo20	-->	Nodo21	-->	Nodo22
+Nodo21	-->	Nodo22	-->	Nodo24
+Nodo26	-->	Nodo27	-->	Nodo28
+Nodo19	-->	Nodo20	-->	Nodo21
+Nodo20	-->	Nodo21	-->	Nodo22
+Nodo21	-->	Nodo22	-->	Nodo24
+Nodo22	-->	Nodo24	-->	Nodo27
+Nodo19	-->	Nodo20	-->	Nodo21
+Nodo21	-->	Nodo22	-->	Nodo24
+Nodo20	-->	Nodo21	-->	Nodo22
+Nodo15	-->	Nodo16	-->	Nodo17
+ ** 16 transmite petición de la clave 26 **
+Nodo17	-->	Nodo18	-->	Nodo19
+Nodo18	-->	Nodo19	-->	Nodo20
+Nodo19	-->	Nodo20	-->	Nodo21
+Nodo28	-->	Nodo29	-->	Nodo30
+Nodo29	-->	Nodo30	-->	Nodo0
+Nodo20	-->	Nodo21	-->	Nodo22
+Nodo17	-->	Nodo18	-->	Nodo19
+()---> El nodo 30 sale del anillo
+[t402db] EOF
+Nodo18	-->	Nodo19	-->	Nodo20
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo14	-->	Nodo15	-->	Nodo16
+ ** 15 transmite petición de la clave 26 **
+Nodo19	-->	Nodo20	-->	Nodo21
+Nodo15	-->	Nodo16	-->	Nodo17
+Nodo24	-->	Nodo27	-->	Nodo28
+Nodo17	-->	Nodo18	-->	Nodo19
+Nodo22	-->	Nodo24	-->	Nodo27
+()---> El nodo 24 sale del anillo
+Nodo18	-->	Nodo19	-->	Nodo20
+[t402d5] EOF
+Nodo9	-->	Nodo10	-->	Nodo11
+Nodo8	-->	Nodo9	-->	Nodo10
+Nodo6	-->	Nodo7	-->	Nodo9
+Nodo3	-->	Nodo6	-->	Nodo7
+Nodo2	-->	Nodo3	-->	Nodo6
+Nodo39	-->	Nodo0	-->	Nodo3
+Nodo21	-->	Nodo22	-->	*null*
+Nodo20	-->	Nodo21	-->	Nodo22
+Nodo21	-->	Nodo22	-->	Nodo23
+Nodo19	-->	Nodo20	-->	Nodo21
+Nodo20	-->	Nodo21	-->	Nodo22
+Nodo21	-->	Nodo22	-->	Nodo23
+()---> El nodo 22 sale del anillo
+[t402d1] EOF
+Nodo9	-->	Nodo10	-->	Nodo11
+Nodo7	-->	Nodo9	-->	Nodo10
+Nodo6	-->	Nodo7	-->	Nodo9
+Nodo3	-->	Nodo6	-->	Nodo7
+Nodo0	-->	Nodo3	-->	Nodo6
+Nodo43	-->	Nodo0	-->	Nodo3
+Nodo14	-->	Nodo15	-->	Nodo16
+Nodo15	-->	Nodo16	-->	Nodo17
+Nodo17	-->	Nodo18	-->	Nodo19
+Nodo18	-->	Nodo19	-->	Nodo20
+Nodo19	-->	Nodo20	-->	Nodo21
+Nodo28	-->	Nodo29	-->	*null*
+Nodo20	-->	Nodo21	-->	Nodo26
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo28	-->	Nodo29	-->	Nodo31
+*null*	-->	Nodo27	-->	Nodo28
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo28	-->	Nodo29	-->	Nodo31
+*null*	-->	Nodo27	-->	Nodo28
+Nodo9	-->	Nodo10	-->	Nodo11
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo28	-->	Nodo29	-->	Nodo31
+Nodo7	-->	Nodo9	-->	Nodo10
+Nodo9	-->	Nodo10	-->	Nodo11
+Nodo28	-->	Nodo29	-->	Nodo31
+Nodo6	-->	Nodo7	-->	Nodo9
+Nodo7	-->	Nodo9	-->	Nodo10
+Nodo9	-->	Nodo10	-->	Nodo11
+Nodo3	-->	Nodo6	-->	Nodo7
+Nodo6	-->	Nodo7	-->	Nodo9
+Nodo7	-->	Nodo9	-->	Nodo10
+Nodo14	-->	Nodo15	-->	Nodo16
+Nodo9	-->	Nodo10	-->	Nodo11
+Nodo3	-->	Nodo6	-->	Nodo7
+Nodo15	-->	Nodo16	-->	Nodo17
+ ** 16 transmite petición de la clave 26 **
+Nodo7	-->	Nodo9	-->	Nodo10
+Nodo17	-->	Nodo18	-->	Nodo19
+Nodo14	-->	Nodo15	-->	Nodo16
+Nodo9	-->	Nodo10	-->	Nodo11
+Nodo18	-->	Nodo19	-->	Nodo20
+Nodo6	-->	Nodo7	-->	Nodo9
+Nodo15	-->	Nodo16	-->	Nodo17
+Nodo19	-->	Nodo20	-->	Nodo21
+Nodo8	-->	Nodo9	-->	Nodo10
+Nodo9	-->	Nodo10	-->	Nodo11
+Nodo14	-->	Nodo15	-->	Nodo16
+ ** 15 transmite petición de la clave 26 **
+Nodo17	-->	Nodo18	-->	Nodo19
+()---> El nodo 10 sale del anillo
+Nodo15	-->	Nodo16	-->	Nodo17
+[t402dd] EOF
+Nodo18	-->	Nodo19	-->	Nodo20
+Nodo6	-->	Nodo7	-->	Nodo9
+Nodo17	-->	Nodo18	-->	Nodo19
+Nodo14	-->	Nodo15	-->	Nodo16
+Nodo18	-->	Nodo19	-->	Nodo20
+Nodo15	-->	Nodo16	-->	Nodo17
+Nodo14	-->	Nodo15	-->	Nodo16
+Nodo17	-->	Nodo18	-->	Nodo19
+Nodo15	-->	Nodo16	-->	Nodo17
+Nodo14	-->	Nodo15	-->	Nodo16
+Nodo17	-->	Nodo18	-->	Nodo19
+Nodo15	-->	Nodo16	-->	Nodo17
+ ** 16 transmite petición de la clave 26 **
+Nodo0	-->	Nodo3	-->	Nodo6
+Nodo5	-->	Nodo6	-->	Nodo7
+Nodo44	-->	Nodo0	-->	Nodo3
+Nodo0	-->	Nodo3	-->	Nodo6
+Nodo3	-->	Nodo6	-->	Nodo7
+Nodo45	-->	Nodo0	-->	Nodo3
+Nodo20	-->	Nodo21	-->	Nodo26
+Nodo19	-->	Nodo20	-->	Nodo21
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo26	-->	Nodo27	-->	Nodo28
+Nodo20	-->	Nodo21	-->	Nodo26
+Nodo18	-->	Nodo19	-->	Nodo20
+Nodo28	-->	Nodo29	-->	Nodo31
+Nodo19	-->	Nodo20	-->	Nodo21
+Nodo17	-->	Nodo18	-->	Nodo19
+Nodo26	-->	Nodo27	-->	Nodo28
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo20	-->	Nodo21	-->	Nodo26
+Nodo18	-->	Nodo19	-->	Nodo20
+Nodo19	-->	Nodo20	-->	Nodo21
+Nodo26	-->	Nodo27	-->	Nodo28
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo20	-->	Nodo21	-->	Nodo26
+Nodo18	-->	Nodo19	-->	Nodo20
+Nodo19	-->	Nodo20	-->	Nodo21
+Nodo26	-->	Nodo27	-->	Nodo28
+Nodo20	-->	Nodo21	-->	Nodo26
+Nodo19	-->	Nodo20	-->	Nodo21
+Nodo20	-->	Nodo21	-->	Nodo26
+Nodo14	-->	Nodo15	-->	Nodo16
+Nodo15	-->	Nodo16	-->	Nodo17
+Nodo17	-->	Nodo18	-->	Nodo19
+Nodo18	-->	Nodo19	-->	Nodo20
+Nodo19	-->	Nodo20	-->	Nodo21
+Nodo7	-->	Nodo9	-->	*null*
+Nodo6	-->	Nodo7	-->	Nodo9
+Nodo7	-->	Nodo9	-->	Nodo11
+Nodo7	-->	Nodo9	-->	Nodo11
+Nodo3	-->	Nodo6	-->	Nodo7
+Nodo6	-->	Nodo7	-->	Nodo9
+Nodo7	-->	Nodo9	-->	Nodo11
+Nodo14	-->	Nodo15	-->	Nodo16
+Nodo6	-->	Nodo7	-->	Nodo9
+Nodo15	-->	Nodo16	-->	Nodo17
+()---> El nodo 15 sale del anillo
+[t402cc] EOF
+Nodo7	-->	Nodo9	-->	Nodo11
+Nodo6	-->	Nodo7	-->	Nodo9
+Nodo17	-->	Nodo18	-->	Nodo19
+Nodo18	-->	Nodo19	-->	Nodo20
+Nodo7	-->	Nodo9	-->	Nodo11
+Nodo0	-->	Nodo3	-->	Nodo6
+Nodo46	-->	Nodo0	-->	Nodo3
+Nodo28	-->	Nodo29	-->	Nodo31
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo26	-->	Nodo27	-->	Nodo28
+Nodo20	-->	Nodo21	-->	Nodo26
+Nodo19	-->	Nodo20	-->	Nodo21
+*** 6 Inicializa petición de la clave 28 ***
+ ** 7 transmite petición de la clave 28 **
+Nodo0	-->	Nodo3	-->	Nodo6
+Nodo3	-->	Nodo6	-->	Nodo7
+ ** 6 transmite petición de la clave 28 **
+Nodo6	-->	Nodo7	-->	Nodo9
+Nodo3	-->	Nodo6	-->	Nodo7
+Nodo7	-->	Nodo9	-->	Nodo11
+*null*	-->	Nodo16	-->	Nodo17
+Nodo6	-->	Nodo7	-->	Nodo9
+ ** 7 transmite petición de la clave 28 **
+Nodo3	-->	Nodo6	-->	Nodo7
+ ** 6 transmite petición de la clave 28 **
+Nodo17	-->	Nodo18	-->	Nodo19
+Nodo18	-->	Nodo19	-->	Nodo20
+Nodo8	-->	Nodo9	-->	Nodo11
+*null*	-->	Nodo16	-->	Nodo17
+Nodo6	-->	Nodo7	-->	Nodo9
+Nodo17	-->	Nodo18	-->	Nodo19
+Nodo7	-->	Nodo9	-->	Nodo11
+*null*	-->	Nodo16	-->	Nodo17
+Nodo18	-->	Nodo19	-->	Nodo20
+Nodo17	-->	Nodo18	-->	Nodo19
+Nodo7	-->	Nodo9	-->	Nodo11
+*null*	-->	Nodo16	-->	Nodo17
+Nodo17	-->	Nodo18	-->	Nodo19
+Nodo14	-->	Nodo16	-->	Nodo17
+Nodo14	-->	Nodo16	-->	Nodo17
+Nodo3	-->	Nodo6	-->	Nodo7
+Nodo6	-->	Nodo7	-->	Nodo9
+Nodo7	-->	Nodo9	-->	Nodo11
+Nodo14	-->	Nodo16	-->	Nodo17
+Nodo47	-->	Nodo0	-->	Nodo3
+Nodo28	-->	Nodo29	-->	Nodo31
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo28	-->	Nodo29	-->	Nodo31
+Nodo26	-->	Nodo27	-->	Nodo28
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo1	-->	Nodo3	-->	Nodo6
+Nodo5	-->	Nodo6	-->	Nodo7
+()---> El nodo 6 sale del anillo
+[t402c3] EOF
+Nodo6	-->	Nodo7	-->	Nodo9
+Nodo20	-->	Nodo21	-->	Nodo26
+Nodo48	-->	Nodo0	-->	Nodo3
+ ** 7 transmite petición de la clave 28 **
+Nodo26	-->	Nodo27	-->	Nodo28
+Nodo2	-->	Nodo3	-->	*null*
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo7	-->	Nodo9	-->	Nodo11
+Nodo19	-->	Nodo20	-->	Nodo21
+Nodo49	-->	Nodo0	-->	Nodo3
+Nodo0	-->	Nodo3	-->	Nodo4
+Nodo20	-->	Nodo21	-->	Nodo26
+Nodo26	-->	Nodo27	-->	Nodo28
+Nodo18	-->	Nodo19	-->	Nodo20
+Nodo14	-->	Nodo16	-->	Nodo17
+*** 16 Inicializa petición de la clave 28 ***
+Nodo19	-->	Nodo20	-->	Nodo21
+Nodo53	-->	Nodo0	-->	Nodo3
+Nodo17	-->	Nodo18	-->	Nodo19
+Nodo20	-->	Nodo21	-->	Nodo26
+Nodo18	-->	Nodo19	-->	Nodo20
+Nodo19	-->	Nodo20	-->	Nodo21
+Nodo20	-->	Nodo21	-->	Nodo26
+Nodo17	-->	Nodo18	-->	Nodo19
+Nodo18	-->	Nodo19	-->	Nodo20
+*** 19 Inicializa petición de la clave 8 ***
+Nodo19	-->	Nodo20	-->	Nodo21
+Nodo17	-->	Nodo18	-->	Nodo19
+Nodo18	-->	Nodo19	-->	Nodo20
+Nodo17	-->	Nodo18	-->	Nodo19
+Nodo14	-->	Nodo16	-->	Nodo17
+Nodo0	-->	Nodo3	-->	Nodo4
+Nodo51	-->	Nodo0	-->	Nodo3
+Nodo0	-->	Nodo3	-->	Nodo4
+Nodo0	-->	Nodo3	-->	Nodo4
+*null*	-->	Nodo7	-->	Nodo9
+Nodo7	-->	Nodo9	-->	Nodo11
+*null*	-->	Nodo7	-->	Nodo9
+Nodo14	-->	Nodo16	-->	Nodo17
+Nodo7	-->	Nodo9	-->	Nodo11
+Nodo14	-->	Nodo16	-->	Nodo17
+ ** 16 transmite petición de la clave 28 **
+Nodo28	-->	Nodo29	-->	Nodo31
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo26	-->	Nodo27	-->	Nodo28
+Nodo20	-->	Nodo21	-->	Nodo26
+Nodo19	-->	Nodo20	-->	Nodo21
+Nodo18	-->	Nodo19	-->	Nodo20
+Nodo17	-->	Nodo18	-->	Nodo19
+Nodo52	-->	Nodo0	-->	Nodo3
+*null*	-->	Nodo7	-->	Nodo9
+Nodo7	-->	Nodo9	-->	Nodo11
+Nodo8	-->	Nodo9	-->	Nodo11
+Nodo14	-->	Nodo16	-->	Nodo18
+Nodo28	-->	Nodo29	-->	Nodo31
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo26	-->	Nodo27	-->	Nodo28
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo26	-->	Nodo27	-->	Nodo28
+Nodo20	-->	Nodo21	-->	Nodo26
+Nodo18	-->	Nodo19	-->	Nodo20
+Nodo19	-->	Nodo20	-->	Nodo21
+***¡¡¡Se encontró en 20 la clave 8 buscada!!!***
+Nodo20	-->	Nodo21	-->	Nodo26
+*null*	-->	Nodo18	-->	Nodo19
+Nodo18	-->	Nodo19	-->	Nodo20
+Nodo19	-->	Nodo20	-->	Nodo21
+*null*	-->	Nodo18	-->	Nodo19
+Nodo18	-->	Nodo19	-->	Nodo20
+Nodo19	-->	Nodo20	-->	Nodo21
+Nodo14	-->	Nodo16	-->	Nodo18
+*null*	-->	Nodo18	-->	Nodo19
+Nodo28	-->	Nodo29	-->	Nodo31
+Nodo18	-->	Nodo19	-->	Nodo20
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo26	-->	Nodo27	-->	Nodo28
+Nodo20	-->	Nodo21	-->	Nodo26
+Nodo19	-->	Nodo20	-->	Nodo21
+Nodo18	-->	Nodo19	-->	Nodo20
+Nodo14	-->	Nodo16	-->	Nodo18
+Nodo16	-->	Nodo18	-->	Nodo19
+Nodo55	-->	Nodo0	-->	Nodo3
+Nodo0	-->	Nodo3	-->	Nodo4
+Nodo58	-->	Nodo0	-->	Nodo3
+Nodo1	-->	Nodo3	-->	*null*
+Nodo5	-->	Nodo7	-->	Nodo9
+Nodo57	-->	Nodo0	-->	Nodo3
+Nodo7	-->	Nodo9	-->	Nodo11
+Nodo2	-->	Nodo3	-->	Nodo5
+Nodo54	-->	Nodo0	-->	Nodo3
+Nodo0	-->	Nodo3	-->	Nodo5
+*** 3 Inicializa petición de la clave 11 ***
+Nodo14	-->	Nodo16	-->	Nodo18
+Nodo16	-->	Nodo18	-->	Nodo19
+Nodo5	-->	Nodo7	-->	Nodo9
+ ** 7 transmite petición de la clave 7 **
+Nodo0	-->	Nodo3	-->	Nodo5
+Nodo7	-->	Nodo9	-->	Nodo11
+Nodo5	-->	Nodo7	-->	Nodo9
+Nodo0	-->	Nodo3	-->	Nodo5
+ ** 3 transmite petición de la clave 11 **
+Nodo7	-->	Nodo9	-->	Nodo11
+Nodo14	-->	Nodo16	-->	Nodo18
+Nodo5	-->	Nodo7	-->	Nodo9
+Nodo0	-->	Nodo3	-->	Nodo5
+Nodo7	-->	Nodo9	-->	Nodo11
+Nodo5	-->	Nodo7	-->	Nodo9
+Nodo28	-->	Nodo29	-->	Nodo31
+Nodo7	-->	Nodo9	-->	Nodo11
+Nodo26	-->	Nodo27	-->	Nodo28
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo28	-->	Nodo29	-->	Nodo31
+Nodo19	-->	Nodo20	-->	Nodo21
+Nodo20	-->	Nodo21	-->	Nodo26
+Nodo26	-->	Nodo27	-->	Nodo28
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo18	-->	Nodo19	-->	Nodo20
+Nodo19	-->	Nodo20	-->	Nodo21
+Nodo20	-->	Nodo21	-->	Nodo26
+Nodo16	-->	Nodo18	-->	Nodo19
+Nodo26	-->	Nodo27	-->	Nodo28
+Nodo18	-->	Nodo19	-->	Nodo20
+Nodo19	-->	Nodo20	-->	Nodo21
+Nodo20	-->	Nodo21	-->	Nodo26
+Nodo14	-->	Nodo16	-->	Nodo18
+Nodo16	-->	Nodo18	-->	Nodo19
+Nodo18	-->	Nodo19	-->	Nodo20
+Nodo19	-->	Nodo20	-->	Nodo21
+Nodo20	-->	Nodo21	-->	Nodo26
+Nodo18	-->	Nodo19	-->	Nodo20
+Nodo19	-->	Nodo20	-->	Nodo21
+Nodo20	-->	Nodo21	-->	Nodo26
+Nodo19	-->	Nodo20	-->	Nodo21
+Nodo54	-->	Nodo0	-->	Nodo3
+Nodo0	-->	Nodo3	-->	Nodo5
+Nodo5	-->	Nodo7	-->	Nodo9
+Nodo7	-->	Nodo9	-->	Nodo11
+Nodo14	-->	Nodo16	-->	Nodo18
+Nodo8	-->	Nodo9	-->	Nodo11
+Nodo16	-->	Nodo18	-->	Nodo19
+Nodo18	-->	Nodo19	-->	Nodo20
+Nodo14	-->	Nodo16	-->	Nodo18
+Nodo16	-->	Nodo18	-->	Nodo19
+Nodo18	-->	Nodo19	-->	Nodo20
+Nodo2	-->	Nodo3	-->	Nodo7
+Nodo1	-->	Nodo3	-->	Nodo7
+*null*	-->	Nodo7	-->	Nodo9
+Nodo7	-->	Nodo9	-->	Nodo11
+Nodo14	-->	Nodo16	-->	Nodo18
+Nodo16	-->	Nodo18	-->	Nodo19
+Nodo28	-->	Nodo29	-->	Nodo31
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo26	-->	Nodo27	-->	Nodo28
+Nodo20	-->	Nodo21	-->	Nodo26
+Nodo19	-->	Nodo20	-->	Nodo21
+Nodo18	-->	Nodo19	-->	Nodo20
+Nodo14	-->	Nodo16	-->	Nodo18
+Nodo16	-->	Nodo18	-->	Nodo19
+Nodo54	-->	Nodo0	-->	Nodo3
+Nodo0	-->	Nodo3	-->	Nodo7
+*null*	-->	Nodo7	-->	Nodo9
+ ** 7 transmite petición de la clave 7 **
+Nodo32	-->	Nodo0	-->	Nodo3
+Nodo28	-->	Nodo29	-->	Nodo31
+Nodo7	-->	Nodo9	-->	Nodo11
+Nodo0	-->	Nodo3	-->	Nodo7
+*null*	-->	Nodo7	-->	Nodo9
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo14	-->	Nodo16	-->	Nodo18
+Nodo7	-->	Nodo9	-->	Nodo11
+Nodo16	-->	Nodo18	-->	Nodo19
+()---> El nodo 16 sale del anillo
+Nodo26	-->	Nodo27	-->	Nodo28
+[t402ce] EOF
+Nodo20	-->	Nodo21	-->	Nodo26
+Nodo19	-->	Nodo20	-->	Nodo21
+Nodo18	-->	Nodo19	-->	Nodo20
+Nodo28	-->	Nodo29	-->	Nodo31
+Nodo32	-->	Nodo0	-->	Nodo3
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo0	-->	Nodo3	-->	Nodo7
+*null*	-->	Nodo7	-->	Nodo9
+Nodo26	-->	Nodo27	-->	Nodo28
+Nodo7	-->	Nodo9	-->	Nodo11
+Nodo20	-->	Nodo21	-->	Nodo26
+Nodo19	-->	Nodo20	-->	Nodo21
+Nodo2	-->	Nodo3	-->	Nodo7
+*null*	-->	Nodo7	-->	Nodo9
+Nodo18	-->	Nodo19	-->	Nodo20
+*null*	-->	Nodo18	-->	Nodo19
+Nodo7	-->	Nodo9	-->	Nodo11
+Nodo1	-->	Nodo3	-->	Nodo7
+Nodo3	-->	Nodo7	-->	Nodo9
+Nodo8	-->	Nodo9	-->	Nodo11
+ ** 0 transmite petición de la clave 30 **
+Nodo32	-->	Nodo0	-->	Nodo3
+Nodo0	-->	Nodo3	-->	Nodo7
+Nodo3	-->	Nodo7	-->	Nodo9
+Nodo28	-->	Nodo29	-->	Nodo31
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo26	-->	Nodo27	-->	Nodo28
+Nodo20	-->	Nodo21	-->	Nodo26
+Nodo19	-->	Nodo20	-->	Nodo21
+Nodo18	-->	Nodo19	-->	Nodo20
+*null*	-->	Nodo18	-->	Nodo19
+Nodo14	-->	Nodo18	-->	Nodo19
+Nodo7	-->	Nodo9	-->	Nodo11
+Nodo7	-->	Nodo9	-->	Nodo11
+Nodo33	-->	Nodo0	-->	Nodo3
+Nodo0	-->	Nodo3	-->	Nodo7
+Nodo36	-->	Nodo0	-->	Nodo3
+Nodo3	-->	Nodo7	-->	Nodo9
+Nodo0	-->	Nodo3	-->	Nodo7
+Nodo3	-->	Nodo7	-->	Nodo9
+Nodo37	-->	Nodo0	-->	Nodo3
+Nodo0	-->	Nodo3	-->	Nodo7
+Nodo28	-->	Nodo29	-->	Nodo31
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo26	-->	Nodo27	-->	Nodo28
+Nodo28	-->	Nodo29	-->	Nodo31
+Nodo26	-->	Nodo27	-->	Nodo28
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo20	-->	Nodo21	-->	Nodo26
+Nodo19	-->	Nodo20	-->	Nodo21
+Nodo26	-->	Nodo27	-->	Nodo28
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo20	-->	Nodo21	-->	Nodo26
+Nodo18	-->	Nodo19	-->	Nodo20
+Nodo19	-->	Nodo20	-->	Nodo21
+Nodo26	-->	Nodo27	-->	Nodo28
+Nodo14	-->	Nodo18	-->	Nodo19
+Nodo20	-->	Nodo21	-->	Nodo26
+Nodo18	-->	Nodo19	-->	Nodo20
+Nodo19	-->	Nodo20	-->	Nodo21
+Nodo14	-->	Nodo18	-->	Nodo19
+Nodo20	-->	Nodo21	-->	Nodo26
+Nodo18	-->	Nodo19	-->	Nodo20
+Nodo19	-->	Nodo20	-->	Nodo21
+()---> El nodo 19 sale del anillo
+[t402d0] EOF
+Nodo20	-->	Nodo21	-->	Nodo26
+*null*	-->	Nodo20	-->	Nodo21
+Nodo14	-->	Nodo18	-->	Nodo20
+()---> El nodo 21 sale del anillo
+[t402e0] EOF
+Nodo7	-->	Nodo9	-->	Nodo11
+Nodo3	-->	Nodo7	-->	Nodo9
+Nodo7	-->	Nodo9	-->	Nodo11
+Nodo2	-->	Nodo3	-->	Nodo7
+*null*	-->	Nodo20	-->	Nodo26
+Nodo3	-->	Nodo7	-->	Nodo9
+Nodo7	-->	Nodo9	-->	Nodo11
+Nodo14	-->	Nodo18	-->	Nodo20
+Nodo1	-->	Nodo3	-->	Nodo7
+ ** 0 transmite petición de la clave 7 **
+Nodo37	-->	Nodo0	-->	Nodo3
+Nodo28	-->	Nodo29	-->	Nodo31
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo26	-->	Nodo27	-->	Nodo28
+Nodo3	-->	Nodo7	-->	Nodo9
+*null*	-->	Nodo20	-->	Nodo26
+Nodo0	-->	Nodo3	-->	Nodo7
+Nodo7	-->	Nodo9	-->	*null*
+Nodo14	-->	Nodo18	-->	Nodo20
+Nodo3	-->	Nodo7	-->	Nodo9
+Nodo8	-->	Nodo9	-->	Nodo10
+Nodo37	-->	Nodo0	-->	Nodo3
+Nodo0	-->	Nodo3	-->	Nodo7
+Nodo3	-->	Nodo7	-->	Nodo9
+Nodo28	-->	Nodo29	-->	Nodo31
+Nodo26	-->	Nodo27	-->	Nodo28
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo28	-->	Nodo29	-->	Nodo31
+Nodo26	-->	Nodo27	-->	Nodo28
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo26	-->	Nodo27	-->	Nodo28
+Nodo7	-->	Nodo9	-->	Nodo10
+Nodo7	-->	Nodo9	-->	Nodo10
+Nodo18	-->	Nodo20	-->	Nodo26
+Nodo14	-->	Nodo18	-->	Nodo20
+Nodo43	-->	Nodo0	-->	Nodo3
+Nodo0	-->	Nodo3	-->	Nodo7
+Nodo3	-->	Nodo7	-->	Nodo9
+Nodo41	-->	Nodo0	-->	Nodo3
+()---> El nodo 7 sale del anillo
+[t402c5] EOF
+*null*	-->	Nodo9	-->	Nodo10
+Nodo28	-->	Nodo29	-->	Nodo31
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo26	-->	Nodo27	-->	Nodo28
+Nodo18	-->	Nodo20	-->	Nodo26
+Nodo14	-->	Nodo18	-->	Nodo20
+Nodo14	-->	Nodo18	-->	Nodo20
+Nodo2	-->	Nodo3	-->	*null*
+Nodo41	-->	Nodo0	-->	Nodo3
+Nodo0	-->	Nodo3	-->	Nodo8
+Nodo42	-->	Nodo0	-->	Nodo3
+()---> El nodo 3 sale del anillo
+[t402bd] EOF
+Nodo28	-->	Nodo29	-->	Nodo31
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo18	-->	Nodo20	-->	Nodo26
+Nodo14	-->	Nodo18	-->	Nodo20
+Nodo26	-->	Nodo27	-->	Nodo28
+Nodo18	-->	Nodo20	-->	Nodo26
+Nodo14	-->	Nodo18	-->	Nodo20
+Nodo18	-->	Nodo20	-->	Nodo26
+Nodo18	-->	Nodo20	-->	Nodo26
+*null*	-->	Nodo9	-->	Nodo10
+Nodo42	-->	Nodo0	-->	Nodo1
+Nodo14	-->	Nodo18	-->	Nodo20
+Nodo28	-->	Nodo29	-->	*null*
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo26	-->	Nodo27	-->	Nodo28
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo28	-->	Nodo29	-->	Nodo32
+Nodo26	-->	Nodo27	-->	Nodo28
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo18	-->	Nodo20	-->	Nodo26
+Nodo26	-->	Nodo27	-->	Nodo28
+Nodo8	-->	Nodo9	-->	Nodo10
+Nodo14	-->	Nodo18	-->	Nodo20
+Nodo18	-->	Nodo20	-->	Nodo26
+Nodo42	-->	Nodo0	-->	Nodo1
+Nodo45	-->	Nodo0	-->	Nodo1
+Nodo28	-->	Nodo29	-->	Nodo32
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo26	-->	Nodo27	-->	Nodo28
+Nodo8	-->	Nodo9	-->	Nodo10
+Nodo14	-->	Nodo18	-->	Nodo20
+Nodo18	-->	Nodo20	-->	Nodo26
+Nodo8	-->	Nodo9	-->	Nodo10
+Nodo14	-->	Nodo18	-->	Nodo20
+Nodo18	-->	Nodo20	-->	Nodo26
+Nodo8	-->	Nodo9	-->	Nodo10
+Nodo14	-->	Nodo18	-->	Nodo20
+Nodo14	-->	Nodo18	-->	Nodo20
+*null*	-->	Nodo0	-->	Nodo1
+Nodo47	-->	Nodo0	-->	Nodo1
+Nodo8	-->	Nodo9	-->	Nodo10
+Nodo8	-->	Nodo9	-->	Nodo10
+ ** 0 transmite petición de la clave 11 **
+Nodo47	-->	Nodo0	-->	Nodo1
+ ** 0 transmite petición de la clave 10 **
+Nodo47	-->	Nodo0	-->	Nodo1
+Nodo8	-->	Nodo9	-->	Nodo10
+Nodo8	-->	Nodo9	-->	Nodo10
+Nodo26	-->	Nodo27	-->	Nodo28
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo28	-->	Nodo29	-->	Nodo32
+Nodo26	-->	Nodo27	-->	Nodo28
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo18	-->	Nodo20	-->	Nodo26
+Nodo26	-->	Nodo27	-->	Nodo28
+Nodo14	-->	Nodo18	-->	Nodo20
+Nodo18	-->	Nodo20	-->	Nodo26
+Nodo14	-->	Nodo18	-->	Nodo20
+Nodo18	-->	Nodo20	-->	Nodo26
+Nodo14	-->	Nodo18	-->	Nodo20
+Nodo8	-->	Nodo9	-->	Nodo10
+Nodo28	-->	Nodo29	-->	Nodo32
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo26	-->	Nodo27	-->	Nodo28
+Nodo18	-->	Nodo20	-->	Nodo26
+Nodo14	-->	Nodo18	-->	Nodo20
+Nodo47	-->	Nodo0	-->	Nodo1
+Nodo49	-->	Nodo0	-->	Nodo1
+Nodo8	-->	Nodo9	-->	Nodo10
+*** 9 Inicializa petición de la clave 13 ***
+Nodo8	-->	Nodo9	-->	Nodo10
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo28	-->	Nodo29	-->	Nodo32
+Nodo26	-->	Nodo27	-->	Nodo28
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo26	-->	Nodo27	-->	Nodo28
+Nodo18	-->	Nodo20	-->	Nodo26
+Nodo14	-->	Nodo18	-->	Nodo20
+Nodo18	-->	Nodo20	-->	Nodo26
+Nodo14	-->	Nodo18	-->	Nodo20
+Nodo52	-->	Nodo0	-->	Nodo1
+Nodo55	-->	Nodo0	-->	Nodo1
+Nodo8	-->	Nodo9	-->	Nodo10
+ ** 9 transmite petición de la clave 13 **
+Nodo8	-->	Nodo9	-->	Nodo10
+Nodo28	-->	Nodo29	-->	Nodo32
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo26	-->	Nodo27	-->	Nodo28
+Nodo18	-->	Nodo20	-->	Nodo26
+Nodo26	-->	Nodo27	-->	Nodo28
+Nodo14	-->	Nodo18	-->	Nodo20
+Nodo18	-->	Nodo20	-->	Nodo26
+Nodo14	-->	Nodo18	-->	Nodo20
+Nodo18	-->	Nodo20	-->	Nodo26
+Nodo14	-->	Nodo18	-->	Nodo20
+Nodo55	-->	Nodo0	-->	Nodo1
+Nodo8	-->	Nodo9	-->	Nodo10
+Nodo8	-->	Nodo9	-->	Nodo10
+Nodo8	-->	Nodo9	-->	Nodo10
+Nodo8	-->	Nodo9	-->	Nodo10
+ ** 9 transmite petición de la clave 13 **
+ ** 0 transmite petición de la clave 11 **
+Nodo55	-->	Nodo0	-->	Nodo1
+Nodo28	-->	Nodo29	-->	Nodo32
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo26	-->	Nodo27	-->	Nodo28
+Nodo18	-->	Nodo20	-->	Nodo26
+*** 20 Inicializa petición de la clave 5 ***
+Nodo14	-->	Nodo18	-->	Nodo20
+Nodo8	-->	Nodo9	-->	Nodo10
+Nodo55	-->	Nodo0	-->	Nodo1
+Nodo58	-->	Nodo0	-->	Nodo1
+Nodo32	-->	Nodo0	-->	Nodo1
+Nodo54	-->	Nodo0	-->	Nodo1
+Nodo28	-->	Nodo29	-->	Nodo32
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo26	-->	Nodo27	-->	Nodo28
+Nodo18	-->	Nodo20	-->	Nodo26
+Nodo14	-->	Nodo18	-->	Nodo20
+Nodo18	-->	Nodo20	-->	Nodo26
+()---> El nodo 20 sale del anillo
+[t402d2] EOF
+Nodo8	-->	Nodo9	-->	Nodo10
+Nodo8	-->	Nodo9	-->	Nodo10
+Nodo54	-->	Nodo0	-->	Nodo1
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo28	-->	Nodo29	-->	Nodo32
+Nodo26	-->	Nodo27	-->	Nodo28
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo14	-->	Nodo18	-->	*null*
+*null*	-->	Nodo27	-->	Nodo28
+Nodo8	-->	Nodo9	-->	Nodo10
+Nodo8	-->	Nodo9	-->	Nodo10
+Nodo14	-->	Nodo18	-->	Nodo27
+*null*	-->	Nodo9	-->	Nodo10
+Nodo60	-->	Nodo0	-->	Nodo1
+Nodo65	-->	Nodo0	-->	Nodo1
+Nodo68	-->	Nodo0	-->	Nodo1
+Nodo71	-->	Nodo0	-->	Nodo1
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo28	-->	Nodo29	-->	Nodo32
+*null*	-->	Nodo27	-->	Nodo28
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo14	-->	Nodo18	-->	Nodo27
+*null*	-->	Nodo9	-->	Nodo10
+ ** 9 transmite petición de la clave 13 **
+*null*	-->	Nodo9	-->	Nodo10
+*null*	-->	Nodo9	-->	Nodo10
+Nodo70	-->	Nodo0	-->	Nodo1
+Nodo72	-->	Nodo0	-->	Nodo1
+Nodo73	-->	Nodo0	-->	Nodo1
+Nodo28	-->	Nodo29	-->	Nodo32
+Nodo27	-->	Nodo28	-->	Nodo29
+*null*	-->	Nodo27	-->	Nodo28
+Nodo14	-->	Nodo18	-->	Nodo27
+*null*	-->	Nodo9	-->	*null*
+Nodo2	-->	Nodo9	-->	Nodo14
+Nodo28	-->	Nodo29	-->	Nodo32
+Nodo27	-->	Nodo28	-->	Nodo29
+*null*	-->	Nodo27	-->	Nodo28
+Nodo14	-->	Nodo18	-->	Nodo27
+Nodo2	-->	Nodo9	-->	Nodo14
+Nodo73	-->	Nodo0	-->	*null*
+Nodo78	-->	Nodo0	-->	Nodo2
+Nodo56	-->	Nodo0	-->	Nodo2
+Nodo62	-->	Nodo0	-->	Nodo2
+Nodo28	-->	Nodo29	-->	Nodo32
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo14	-->	Nodo18	-->	Nodo27
+*null*	-->	Nodo27	-->	Nodo28
+Nodo14	-->	Nodo18	-->	Nodo27
+Nodo18	-->	Nodo27	-->	Nodo28
+Nodo2	-->	Nodo9	-->	Nodo14
+Nodo14	-->	Nodo18	-->	Nodo27
+Nodo2	-->	Nodo9	-->	Nodo14
+Nodo2	-->	Nodo9	-->	Nodo14
+Nodo62	-->	Nodo0	-->	Nodo2
+Nodo28	-->	Nodo29	-->	Nodo32
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo18	-->	Nodo27	-->	Nodo28
+Nodo14	-->	Nodo18	-->	Nodo27
+Nodo2	-->	Nodo9	-->	Nodo14
+Nodo28	-->	Nodo29	-->	Nodo32
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo18	-->	Nodo27	-->	Nodo28
+Nodo14	-->	Nodo18	-->	Nodo27
+Nodo2	-->	Nodo9	-->	Nodo14
+()---> El nodo 9 sale del anillo
+[t402c4] EOF
+Nodo28	-->	Nodo29	-->	Nodo32
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo28	-->	Nodo29	-->	Nodo32
+Nodo18	-->	Nodo27	-->	Nodo28
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo14	-->	Nodo18	-->	Nodo27
+()---> El nodo 18 sale del anillo
+Nodo18	-->	Nodo27	-->	Nodo28
+[t402cd] EOF
+*null*	-->	Nodo27	-->	Nodo28
+Nodo62	-->	Nodo0	-->	Nodo2
+Nodo76	-->	Nodo0	-->	Nodo2
+Nodo79	-->	Nodo0	-->	Nodo2
+Nodo28	-->	Nodo29	-->	Nodo32
+Nodo27	-->	Nodo28	-->	Nodo29
+*null*	-->	Nodo27	-->	Nodo28
+Nodo79	-->	Nodo0	-->	Nodo2
+Nodo28	-->	Nodo29	-->	Nodo32
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo28	-->	Nodo29	-->	Nodo32
+Nodo27	-->	Nodo28	-->	Nodo29
+*null*	-->	Nodo27	-->	Nodo28
+***¡¡¡Se encontró en 27 la clave 18 buscada!!!***
+Nodo79	-->	Nodo0	-->	Nodo2
+*null*	-->	Nodo27	-->	Nodo28
+Nodo66	-->	Nodo0	-->	Nodo2
+Nodo28	-->	Nodo29	-->	Nodo32
+Nodo28	-->	Nodo29	-->	Nodo32
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo14	-->	Nodo27	-->	Nodo28
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo14	-->	Nodo27	-->	Nodo28
+Nodo64	-->	Nodo0	-->	Nodo2
+Nodo67	-->	Nodo0	-->	Nodo2
+Nodo80	-->	Nodo0	-->	Nodo2
+Nodo75	-->	Nodo0	-->	Nodo2
+Nodo81	-->	Nodo0	-->	Nodo2
+Nodo28	-->	Nodo29	-->	Nodo32
+Nodo27	-->	Nodo28	-->	Nodo29
+Nodo14	-->	Nodo27	-->	Nodo28
+Nodo81	-->	N
