@@ -3,16 +3,6 @@
  *
  */
 
-#define NPROC 8
-
-
-#define PETITION 2
-#define NOTIFY 3
-
-#define ANTECESOR 4
-#define KEY 5
-
-#define REPORT 1
 
 #include <stdio.h>
 #include <stdlib.h>

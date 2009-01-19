@@ -5,7 +5,9 @@
 
 
 
-#define NPROC 8
+#define K_VALUE 5
+#define NPROC 32
+
 
 #define REPORT 1
 
