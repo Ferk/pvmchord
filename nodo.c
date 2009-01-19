@@ -5,17 +5,6 @@
  * http://www.mpi-inf.mpg.de/departments/d5/teaching/ws03_04/p2p-data/11-18-writeup1.pdf
  */
 
-#define NPROC 8
-
-#define REPORT 1
-
-#define PETITION 2
-#define NOTIFY 3
-
-#define ANTECESOR 4
-#define KEY 5
-#define SUCCESSOR 6
-
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -23,7 +12,7 @@
 #include <sys/types.h>
 #include "pvm3.h"
 
-#include <unistd.h>
+#include "macros.h"
 
 
 void mainloop( );
@@ -36,12 +25,16 @@ void stabilize( );
 void reportState();
 void reportEntering();
 void reportExiting();
+void reportKeyInit(int);
+void reportKeyTrans(int);
+void reportKeyFound(int);
 
 int mytid;                  /* mi task id */
 int mynode;                 /* mi numero en el anillo */
 int predecessor;
 int successor;
 
+int pending_keys;
 
 
 
@@ -166,7 +159,7 @@ void mainloop()
 
     case KEY: /* Notificación de búsqueda de clave */
       pvm_upkint(&token,1,1);
-      if(token == mynode) { /* si tiene el token, atiende la peticion */
+      if( 3 <= mynode-token) { /* si tiene el token, atiende la peticion */
         pfound(token);
       }
       else { /* de lo contrario transmite la notificación por el anillo */
@@ -174,9 +167,21 @@ void mainloop()
         pvm_pkint(&msg,1,1);
         pvm_pkint(&token,1,1);
         pvm_send(sender, NOTIFY );
+        reportKeyTrans(token);
       }
       break;
     }
+  }
+
+
+  if( rand() < RAND_MAX/80 ) {  
+    token=( (double) rand()*NPROC )/( (double) RAND_MAX);
+    msg=KEY;
+    pvm_initsend( PvmDataDefault );
+    pvm_pkint(&msg,1,1);
+    pvm_pkint(&token,1,1);
+    pvm_send(successor, NOTIFY );
+    reportKeyInit(token);
   }
 
 }
@@ -292,7 +297,7 @@ void reportState()
 {
   int pred;
   int succ; 
-  int type=0;
+  int type=STATE;
   
   if( predecessor == -1) pred=-1;
   else pred= pvm_getinst("anillo-chord",predecessor);
@@ -316,7 +321,7 @@ void reportState()
     quien lo mostrará en la interfaz **/
 void reportEntering()
 {
-  int type=1;
+  int type=ENTER;
   pvm_initsend( PvmDataDefault );
   pvm_pkint(&type,1,1);
   pvm_pkint(&mynode,1,1);
@@ -329,10 +334,50 @@ void reportEntering()
     quien lo mostrará en la interfaz **/
 void reportExiting()
 {
-  int type=2;
+  int type=EXIT;
   pvm_initsend( PvmDataDefault );
   pvm_pkint(&type,1,1);
   pvm_pkint(&mynode,1,1);
+  pvm_send(pvm_parent(), REPORT);
+}
+
+/*******************************************/
+/** Reportar la salida del nodo al padre,
+    quien lo mostrará en la interfaz **/
+void reportKeyInit(int token)
+{
+  int type=KEYINIT;
+  pvm_initsend( PvmDataDefault );
+  pvm_pkint(&type,1,1);
+  pvm_pkint(&mynode,1,1);
+  pvm_pkint(&token,1,1);
+  pvm_send(pvm_parent(), REPORT);
+}
+
+/*******************************************/
+/** Reportar la salida del nodo al padre,
+    quien lo mostrará en la interfaz **/
+void reportKeyTrans(int token)
+{
+  int type=KEYTRANS;
+  pvm_initsend( PvmDataDefault );
+  pvm_pkint(&type,1,1);
+  pvm_pkint(&mynode,1,1);
+  pvm_pkint(&token,1,1);
+  pvm_send(pvm_parent(), REPORT);
+}
+
+
+/*******************************************/
+/** Reportar la salida del nodo al padre,
+    quien lo mostrará en la interfaz **/
+void reportKeyFound(int token)
+{
+  int type=KEYFOUND;
+  pvm_initsend( PvmDataDefault );
+  pvm_pkint(&type,1,1);
+  pvm_pkint(&mynode,1,1);
+  pvm_pkint(&token,1,1);
   pvm_send(pvm_parent(), REPORT);
 }
 
@@ -344,6 +389,7 @@ void reportExiting()
 void pfound(int token)
 {  
   printf("Yo tengo el %d!\n",token);
+  reportKeyFound(token);
 } 
  
   

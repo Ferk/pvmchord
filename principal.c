@@ -19,6 +19,8 @@
 #include <sys/types.h>
 #include "pvm3.h"
 
+#include "macros.h"
+
 int main(int argc, char *argv[])
 {
   int mytid;                  /* mi task id */
@@ -29,7 +31,7 @@ int main(int argc, char *argv[])
   int insertions=0, max_insert=5;
 
 
-  int predecessor, successor, node;
+  int predecessor, successor, node, token;
 
   /* identificarme en pvm */
   mytid = pvm_mytid();
@@ -60,27 +62,42 @@ int main(int argc, char *argv[])
       i=0; /* Pone el contador a cero, para seguir esperando informacion */
       pvm_upkint(&msg,1,1);
       switch (msg) {
-        case 0:
-          pvm_upkint(&node,1,1);
-          pvm_upkint(&predecessor,1,1);
-          pvm_upkint(&successor,1,1);
+      case STATE:
+        pvm_upkint(&node,1,1);
+        pvm_upkint(&predecessor,1,1);
+        pvm_upkint(&successor,1,1);
 
-          if( predecessor < 0 ) printf("*null*\t");
-          else printf("Nodo%d\t",predecessor);
-          printf("-->\tNodo%d\t-->\t",node);
-          if( successor < 0 ) printf("*null*\n");
-          else printf("Nodo%d\n",successor);
-          break;
-        case 1:
-          pvm_upkint(&node,1,1);
-          printf("()<--- El nodo %d entra al anillo\n", node);
-          break;
-        case 2:
-          pvm_upkint(&node,1,1);
-          printf("()---> El nodo %d sale del anillo\n", node);
-          nproc--;
-          break;
-        }
+        if( predecessor < 0 ) printf("*null*\t");
+        else printf("Nodo%d\t",predecessor);
+        printf("-->\tNodo%d\t-->\t",node);
+        if( successor < 0 ) printf("*null*\n");
+        else printf("Nodo%d\n",successor);
+        break;
+      case ENTER:
+        pvm_upkint(&node,1,1);
+        printf("()<--- El nodo %d entra al anillo\n", node);
+        break;
+      case EXIT:
+        pvm_upkint(&node,1,1);
+        printf("()---> El nodo %d sale del anillo\n", node);
+        nproc--;
+        break;
+      case KEYINIT:
+        pvm_upkint(&node,1,1);
+        pvm_upkint(&token,1,1);
+        printf("*** %d Inicializa petición de la clave %d ***\n",node,token);
+        break;
+      case KEYTRANS:
+        pvm_upkint(&node,1,1);
+        pvm_upkint(&token,1,1);
+        printf(" ** %d transmite petición de la clave %d **\n",node,token);
+        break;
+      case KEYFOUND:
+        pvm_upkint(&node,1,1);
+        pvm_upkint(&token,1,1);
+        printf("***¡¡¡Se encontró en %d la clave %d buscada!!!***\n",node,token);
+        break;
+      }
     }
 
     /* Inserción de nuevos nodos */
@@ -100,16 +117,16 @@ int main(int argc, char *argv[])
 
   /*
 
-  printf("Introduce clave a buscar:");
-  scanf("%d",&token);
+    printf("Introduce clave a buscar:");
+    scanf("%d",&token);
 
-  pvm_initsend( PvmDataDefault );
-  msg = KEY;
-  pvm_pkint( &msg, 1, 1);
-  pvm_pkint( &token, 1, 1);
-  pvm_send( tids[0], NOTIFY );
+    pvm_initsend( PvmDataDefault );
+    msg = KEY;
+    pvm_pkint( &msg, 1, 1);
+    pvm_pkint( &token, 1, 1);
+    pvm_send( tids[0], NOTIFY );
 
-  printf("petición de token enviada\n");
+    printf("petición de token enviada\n");
   */
 
   /****************/
