@@ -58,4 +58,4 @@ One successor and predecessor are kept in a list to maintain a high probability 
  - Escalable (lo mismo pa 10 que pa 100)
  - Eficiente (interesante hacer el calculo)
      E=t1p/(np*tnp) ; tnp= t1p/np = eficiencia (lo ideal E=1)
- 
+
