@@ -74,12 +74,11 @@ int main(int argc, char *argv[])
     
     /***************************************/
     /* El nodo trabajará durante un numero aleatorio de ciclos */
-
-    if( rand() > RAND_MAX/5 ) {
+    if( rand()*NPROC > RAND_MAX/10 ) 
       life= 10.0*rand()/RAND_MAX; 
-  }  else {
+    else 
       life= 100.0*rand()/RAND_MAX; 
-    }
+    
 
     for(i=0; i<life; i++) {
       mainloop();
@@ -159,7 +158,7 @@ void mainloop()
 
     case KEY: /* Notificación de búsqueda de clave */
       pvm_upkint(&token,1,1);
-      if( 3 <= mynode-token) { /* si tiene el token, atiende la peticion */
+      if( K_VALUE <= mynode-token) { /* si tiene el token, atiende la peticion */
         pfound(token);
       }
       else { /* de lo contrario transmite la notificación por el anillo */
@@ -212,9 +211,9 @@ void stabilize()
     info = pvm_trecv( successor, ANTECESOR, &tmout ); /* recepción de petición */
     if ( info > 0 ) {
       //printf("%d: petición atendida por %d.\n",mynode,successor);
-    pvm_upkint( &nodo_x, 1, 1);
+    pvm_upkint( &nodo_x, 1, 1);    
     if( pvm_getinst("anillo_chord",nodo_x) < 0) {
-      /* Notificar a mi sucesor de que soy su antecesor */
+      /* Si mi sucesor no tiene antecesor, notificarle que soy yo */
       //printf("notifico a mi sucesor %d, de que yo le precedo\n",successor);
       pvm_initsend( PvmDataDefault );
       msg= ANTECESOR;
@@ -388,7 +387,6 @@ void reportKeyFound(int token)
 */ 
 void pfound(int token)
 {  
-  printf("Yo tengo el %d!\n",token);
   reportKeyFound(token);
 } 
  
