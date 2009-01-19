@@ -48,6 +48,7 @@ int successor;
 int main(int argc, char *argv[])
 {
   int i;
+  int life;
 
   /* identificarme en pvm */
   mytid = pvm_mytid();
@@ -60,7 +61,6 @@ int main(int argc, char *argv[])
   srand(mytid+mynode);
 
 
-  if( rand() > RAND_MAX/4 ) {
     /******************************************/
     /* Procesos dentro del anillo */
     /*** BARRERA ***/
@@ -81,17 +81,23 @@ int main(int argc, char *argv[])
     
     /***************************************/
     /* El nodo trabajará durante un numero aleatorio de ciclos */
-    int life= 20.0*rand()/RAND_MAX; 
+
+    if( rand() > RAND_MAX/5 ) {
+      life= 10.0*rand()/RAND_MAX; 
+  }  else {
+      life= 100.0*rand()/RAND_MAX; 
+    }
+
     for(i=0; i<life; i++) {
       mainloop();
     }
     
-  }  else {
+
     /******************************************/
     /* Procesos a expulsar del anillo  */
     /*** BARRERA ***/
     //pvm_barrier("anillo-chord",NPROC);
-  }
+  
     
 
   /********************/
@@ -197,12 +203,12 @@ void stabilize()
     msg=ANTECESOR; /* peticion de mensaje ANTECESOR */
     pvm_pkint( &msg, 1, 1);
     pvm_send(successor, PETITION ); /* envío de petición */
-    //printf("petición ANTECESOR enviada a %d\n",successor);
+    //printf("%d: petición ANTECESOR enviada a %d\n",mynode,successor);
     info = pvm_trecv( successor, ANTECESOR, &tmout ); /* recepción de petición */
     if ( info > 0 ) {
-      //printf("petición atendida por %d.\n",successor);
+      //printf("%d: petición atendida por %d.\n",mynode,successor);
     pvm_upkint( &nodo_x, 1, 1);
-    if( nodo_x == -1) {
+    if( pvm_getinst("anillo_chord",nodo_x) < 0) {
       /* Notificar a mi sucesor de que soy su antecesor */
       //printf("notifico a mi sucesor %d, de que yo le precedo\n",successor);
       pvm_initsend( PvmDataDefault );
@@ -214,7 +220,7 @@ void stabilize()
     else if( nodo_x != mytid ) {
       /*** ¡Nuevo nodo! ***/
       /* Añadir el nuevo nodo como nuevo sucesor */
-      //printf("tengo nuevo (%d) successor! reemplazo a %d\n",nodo_x,successor);
+      //printf("tengo nuevo (%d:%d) successor! reemplazo a %d\n", pvm_getinst("anillo_chord",nodo_x), nodo_x, successor);
       successor = nodo_x;
       /* Notificar al nuevo nodo de que soy su antecesor */
       pvm_initsend( PvmDataDefault );
