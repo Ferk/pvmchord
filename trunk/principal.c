@@ -1,25 +1,27 @@
 /*
- *    Algoritmo Chord
- *
+ *    Trabajo PVM: Chord
+ *	  Ampliación de Sistemas Operativos
+ *	  Fernando Carmona Varo
+ *    Rafael Jesús García del Pino
+ * 
+ *    Archivo:principal.c
+ *    Fecha 23/01/2009
  */
-
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/types.h>
 #include "pvm3.h"
-
 #include "macros.h"
 
 int main(int argc, char *argv[])
 {
   int mytid;                  /* mi task id */
   int tids[NPROC];            /* array de task id */
-  int info, msg;
+  int info, msg;			  
   int i;
   int nproc;
   int insertions=0, max_insert=5;
-
 
   int predecessor, successor, node, token;
 
@@ -38,7 +40,6 @@ int main(int argc, char *argv[])
     pvm_exit();
     return 1;
   }
-
 
   struct timeval tmout; /* timeout para la rutina trecv */
   tmout.tv_sec=0; /* indica que trecv esperara estos segundos */
@@ -107,4 +108,3 @@ int main(int argc, char *argv[])
   pvm_exit();
   return 0;
 }
-

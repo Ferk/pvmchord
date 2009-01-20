@@ -35,6 +35,13 @@ One successor and predecessor are kept in a list to maintain a high probability 
   - diagramas, graficos, etc
   - clarificar los algoritmos empleados para la solucion comentando las regiones claves del codigo (pero usar el anexo para poner el código en sí)
 
+Comentarios de los archivos de código fuente:
+macros.h:
+Contiene las definiciones basicas de los TAGS de los mensajes a pasar.
+Principal.c:
+Contiene las rutinas basicas para la creacion de los nodos del anillo Chord
+Nodo.c:
+Contiene el codigo basico que realizara cada nodo en el anillo Chord
 
 ++ bibliografia (no numerada)
 

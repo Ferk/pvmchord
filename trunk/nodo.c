@@ -1,32 +1,78 @@
-
 /*
- *    Algoritmo Chord
- *
- * http://www.mpi-inf.mpg.de/departments/d5/teaching/ws03_04/p2p-data/11-18-writeup1.pdf
+ *    Trabajo PVM: Chord
+ *	  Ampliación de Sistemas Operativos
+ *	  Fernando Carmona Varo
+ *    Rafael Jesús García del Pino
+ * 
+ *    Archivo: nodo.c
+ * 	  Fecha 23/01/2009
  */
-
 
 #include <stdio.h>
 #include <stdlib.h>
-
 #include <sys/types.h>
 #include "pvm3.h"
-
 #include "macros.h"
 
-
+/* Funcion mainloop
+ * No devuelve parametros, no recibe parametros
+ * Realiza las rutinas principales de cada nodo, tales como 
+ * atender peticiones o enviar peticiones a nodos contiguos
+ */
 void mainloop( );
-void ptransmit(int, int);
+
+/* Funcion pfound
+ * No devuelve parametros, recibe un token para atender su peticion
+ * Atiende la peticion del token que se le pasa como parametro
+ */
 void pfound(int);
 
+/* Funcion findNext
+ * Devuelve el nodo activo siguiente al nodo
+ * que se le pase como parametro
+ */
 int findNext(int);
+
+/* Funcion stabilize
+ * No recibe parametros, no devuelve parametros
+ * Estabiliza el nodo
+ * Verifica que el nodo tiene su sucesor y predecesor activos
+ */
 void stabilize( );
 
+/* Funcion reportState
+ * Envia informacion acerca del estado del nodo al proceso padre
+ */
 void reportState();
+
+/* Funcion reportEntering
+ * Envia informacion acerca de la entrada de un nodo al anillo
+ * al proceso padre
+ */
 void reportEntering();
+
+/* Funcion reportExiting
+ * Envia informacion acerca de la salida de un nodo del anillo
+ * al proceso padre
+ */
 void reportExiting();
+
+/* Funcion reportKeyInit
+ * Envia informacion sobre el inicio de busqueda de una clave
+ * al proceso padre
+ */
 void reportKeyInit(int);
+
+/* Funcion reportKeyTrans
+ * Envia informacion sobre la transmision de una clave
+ * para su busqueda a través del anillo al proceso padre
+ */
 void reportKeyTrans(int);
+
+/* Funcion reportKeyFound
+ * Envia informacion acerca de el encuentro de una clave en el anillo
+ * al proceso padre
+ */
 void reportKeyFound(int);
 
 int mytid;                  /* mi task id */
@@ -56,8 +102,6 @@ int main(int argc, char *argv[])
 
     /******************************************/
     /* Procesos dentro del anillo */
-    /*** BARRERA ***/
-    //pvm_barrier("anillo-chord",NPROC);
 
     /* indicar la entrada del nodo en el anillo */
     reportEntering();
@@ -67,8 +111,6 @@ int main(int argc, char *argv[])
     /* Inicialmente el predecesor se toma como inexistente */
     predecessor = -1;
     successor = findNext(mynode);
-    
-    //printf("%d: inicialmente, mi sucessor: %d (%d).\n",mynode,successor,pvm_getinst("anillo-chord",successor));
 
     reportState();
     
@@ -85,12 +127,8 @@ int main(int argc, char *argv[])
     }
     
 
-    /******************************************/
-    /* Procesos a expulsar del anillo  */
-    /*** BARRERA ***/
-    //pvm_barrier("anillo-chord",NPROC);
-  
-    
+  /******************************************/
+  /* Procesos a expulsar del anillo  */  
 
   /********************/
   /* Programa terminado, salir del grupo y de pvm */
@@ -99,7 +137,6 @@ int main(int argc, char *argv[])
   pvm_exit();
   return 0;
 }
-
 
 
 void mainloop()
@@ -112,9 +149,7 @@ void mainloop()
   struct timeval tmout; /* timeout para la rutina trecv */
   tmout.tv_sec=0; /* indica que trecv esperara estos segundos */
   tmout.tv_usec=1000000; /* y estos microsegundos */
-
-  //printf("mi sucessor: %d (%d).\n",successor,pvm_getinst("anillo-chord",successor));
-
+  
   /**************************/
   /*** Atender peticiones ***/
   info = pvm_trecv( -1, PETITION, &tmout );
@@ -124,11 +159,9 @@ void mainloop()
     pvm_initsend( PvmDataDefault );
     switch(msg) {
     case ANTECESOR: /* peticion de predecesor */
-      //printf("%d: enviando mi predecesor (%d) a %d.\n",mynode,predecessor,sender);
       pvm_pkint( &predecessor, 1, 1);
       break;
     case SUCCESSOR: /* Petición de sucesor */
-      //printf("enviando mi sucesor (%d) a %d.\n",successor,sender);
       pvm_pkint( &successor, 1, 1);
       break;
     }
@@ -153,7 +186,6 @@ void mainloop()
 
     case ANTECESOR: /* Nuevo tid de antecesor */
       pvm_upkint( &predecessor, 1, 1);
-      //printf("%d: nuevo predecesor, %d.\n",mynode,predecessor);
       break;
 
     case KEY: /* Notificación de búsqueda de clave */
@@ -171,7 +203,6 @@ void mainloop()
       break;
     }
   }
-
 
   if( rand() < RAND_MAX/80 ) {  
     token=( (double) rand()*NPROC )/( (double) RAND_MAX);
@@ -207,24 +238,20 @@ void stabilize()
     msg=ANTECESOR; /* peticion de mensaje ANTECESOR */
     pvm_pkint( &msg, 1, 1);
     pvm_send(successor, PETITION ); /* envío de petición */
-    //printf("%d: petición ANTECESOR enviada a %d\n",mynode,successor);
     info = pvm_trecv( successor, ANTECESOR, &tmout ); /* recepción de petición */
     if ( info > 0 ) {
-      //printf("%d: petición atendida por %d.\n",mynode,successor);
-    pvm_upkint( &nodo_x, 1, 1);    
-    if( pvm_getinst("anillo_chord",nodo_x) < 0) {
-      /* Si mi sucesor no tiene antecesor, notificarle que soy yo */
-      //printf("notifico a mi sucesor %d, de que yo le precedo\n",successor);
-      pvm_initsend( PvmDataDefault );
-      msg= ANTECESOR;
-      pvm_pkint( &msg, 1, 1); /* mensaje de notificacion tipo antecesor */
-      pvm_pkint( &mytid, 1, 1); /* conteniendo mi tid */
-      pvm_send( successor, NOTIFY );
-    }
+      pvm_upkint( &nodo_x, 1, 1);    
+      if( pvm_getinst("anillo_chord",nodo_x) < 0) {
+        /* Si mi sucesor no tiene antecesor, notificarle que soy yo */
+        pvm_initsend( PvmDataDefault );
+        msg= ANTECESOR;
+        pvm_pkint( &msg, 1, 1); /* mensaje de notificacion tipo antecesor */
+        pvm_pkint( &mytid, 1, 1); /* conteniendo mi tid */
+        pvm_send( successor, NOTIFY );
+      }
     else if( nodo_x != mytid ) {
       /*** ¡Nuevo nodo! ***/
       /* Añadir el nuevo nodo como nuevo sucesor */
-      //printf("tengo nuevo (%d:%d) successor! reemplazo a %d\n", pvm_getinst("anillo_chord",nodo_x), nodo_x, successor);
       successor = nodo_x;
       /* Notificar al nuevo nodo de que soy su antecesor */
       pvm_initsend( PvmDataDefault );
@@ -232,40 +259,10 @@ void stabilize()
       pvm_pkint( &msg, 1, 1); /* mensaje de notificacion tipo antecesor */
       pvm_pkint( &mytid, 1, 1); /* conteniendo mi tid */
       pvm_send( nodo_x, NOTIFY );
-    }
+      }
     }
   }
 }
-
-
-
-/***
-    The pseudocode to find the successor node of an id is given below:
-
-
-    id: nodo que busca su sucesor
-     n: nodo al que le pregunta, que segun nuestro sistema es el anterior a id (id-1)
-
-    // ask node n to find the successor of id
-    n.find_successor(id)
-    if (id\in(n, successor])
-    return successor;        //Si id está entre n y su sucesor hay que 
-    else                     //devolver sucessor (el sucesor de n)
-    // forward the query around the circle
-    // con nuestro sistema NO
-
-    n0 = closest_preceding_node(id); //Sino busca el sucesor mas cercano
-    return n0.find_successor(id);
-
-
-    // search the local table for the highest predecessor of id
-    n.closest_preceding_node(id)
-    for i = m downto 1
-    if (finger[i]\in(n,id))
-    return finger[i];
-    return n;
-***/
-
 
 
 /********
@@ -302,8 +299,6 @@ void reportState()
   else pred= pvm_getinst("anillo-chord",predecessor);
   succ= pvm_getinst("anillo-chord",successor);
   
-  //printf("mi predecesor: %d (%d)\n",pred,predecessor);
-
   pvm_initsend( PvmDataDefault );
   pvm_pkint(&type,1,1);
   pvm_pkint(&mynode,1,1);
@@ -312,7 +307,6 @@ void reportState()
   pvm_send(pvm_parent(), REPORT);
 
 }
-
 
 
 /*******************************************/
@@ -341,7 +335,7 @@ void reportExiting()
 }
 
 /*******************************************/
-/** Reportar la salida del nodo al padre,
+/** Reportar la busqueda de una clave al nodo padre,
     quien lo mostrará en la interfaz **/
 void reportKeyInit(int token)
 {
@@ -380,7 +374,6 @@ void reportKeyFound(int token)
   pvm_send(pvm_parent(), REPORT);
 }
 
-
  
 /************************
  Atender la peticion del token
@@ -389,48 +382,3 @@ void pfound(int token)
 {  
   reportKeyFound(token);
 } 
- 
-  
-
-
-
-/*****
-      The pseudocode to stabilize the chord ring/circle after node joins and departures is as follows:
-
-      // create a new Chord ring.
-      n.create()
-      predecessor = nil;
-      successor = n;
-
-      // join a Chord ring containing node n'.
-      n.join(n')
-      predecessor = nil;
-      successor = n'.find_successor(n);
-
-      // called periodically. verifies n’s immediate
-      // successor, and tells the successor about n.
-      n.stabilize()
-      x = successor.predecessor;
-      if (x\in(n, successor))
-      successor = x;
-      successor.notify(n);
-
-      // n' thinks it might be our predecessor.
-      n.notify(n')
-      if (predecessor is nil or n'\in(predecessor, n))
-      predecessor = n';
-
-      // called periodically. refreshes finger table entries.
-      // next stores the index of the finger to fix
-      n.fix_fingers()
-      next = next + 1;
-      if (next > m)
-      next = 1;
-      finger[next] = find_successor(n+2next − 1);
-
-      // called periodically. checks whether predecessor has failed.
-      n.check_predecessor()
-      if (predecessor has failed)
-      predecessor = nil;
-
-*********/
