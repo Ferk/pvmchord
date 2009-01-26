@@ -39,7 +39,7 @@ Comentarios de los archivos de código fuente:
 macros.h:
 Contiene las definiciones basicas de los TAGS de los mensajes a pasar.
 Principal.c:
-Contiene las rutinas basicas para la creacion de los nodos del anillo Chord
+Contiene las rutinas basicas para la creacion de los nodos del anillo Chord, así como recibir y mostrar la informacion necesaria para la visualizacion de el correcto funcionamiento del anillo.
 Nodo.c:
 Contiene el codigo basico que realizara cada nodo en el anillo Chord
 

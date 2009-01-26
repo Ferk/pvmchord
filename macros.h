@@ -1,11 +1,8 @@
-
-
 #ifndef _MACROS_H_
 #define _MACROS_H_
 
 
-
-#define K_VALUE 5
+#define K_VALUE 5       /* */
 #define NPROC 32
 
 
@@ -24,7 +21,6 @@
 #define KEYINIT 10
 #define KEYTRANS 11
 #define KEYFOUND 12
-
 
 
 #endif
