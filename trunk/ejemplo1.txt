@@ -104,7 +104,6 @@ cd /home/ferk/pvm3/bin/LINUX64 && \
 *null*	-->	Nodo31	-->	Nodo0
 *null*	-->	Nodo4	-->	Nodo5
 *null*	-->	Nodo5	-->	Nodo6
-*** 5 Inicializa petición de la clave 10 ***
 *null*	-->	Nodo6	-->	Nodo7
 *null*	-->	Nodo2	-->	Nodo3
 *null*	-->	Nodo11	-->	Nodo13
@@ -136,7 +135,6 @@ Spawneando un nodo
 *null*	-->	Nodo19	-->	Nodo20
 Nodo5	-->	Nodo6	-->	Nodo7
 *null*	-->	Nodo20	-->	Nodo21
- ** 6 transmite petición de la clave 10 **
 *null*	-->	Nodo21	-->	Nodo22
 *null*	-->	Nodo22	-->	Nodo23
 *null*	-->	Nodo23	-->	Nodo24
@@ -155,7 +153,6 @@ Nodo6	-->	Nodo7	-->	Nodo8
 Nodo1	-->	Nodo2	-->	Nodo3
 Nodo0	-->	Nodo1	-->	Nodo2
 Nodo4	-->	Nodo5	-->	Nodo6
- ** 5 transmite petición de la clave 10 **
 Nodo5	-->	Nodo6	-->	Nodo7
 *null*	-->	Nodo4	-->	Nodo5
 *null*	-->	Nodo8	-->	Nodo9
@@ -238,7 +235,6 @@ Nodo4	-->	Nodo5	-->	Nodo6
 Nodo1	-->	Nodo2	-->	Nodo3
 Nodo5	-->	Nodo6	-->	Nodo8
 *null*	-->	Nodo17	-->	Nodo18
- ** 6 transmite petición de la clave 10 **
 Nodo2	-->	Nodo3	-->	Nodo4
 Nodo10	-->	Nodo11	-->	Nodo13
 Nodo17	-->	Nodo18	-->	Nodo19
@@ -316,7 +312,6 @@ Nodo5	-->	Nodo6	-->	Nodo8
 *null*	-->	Nodo17	-->	*null*
 *null*	-->	Nodo19	-->	Nodo20
 Nodo4	-->	Nodo5	-->	Nodo6
- ** 5 transmite petición de la clave 10 **
 Nodo19	-->	Nodo20	-->	Nodo22
 *null*	-->	Nodo4	-->	Nodo5
 *null*	-->	Nodo19	-->	Nodo20
@@ -394,6 +389,7 @@ Nodo22	-->	Nodo23	-->	Nodo24
 Nodo24	-->	Nodo25	-->	Nodo26
 Nodo25	-->	Nodo26	-->	Nodo27
 Nodo23	-->	Nodo24	-->	Nodo25
+*** 5 Inicializa petición de la clave 10 ***
 Nodo26	-->	Nodo27	-->	Nodo28
 Nodo27	-->	Nodo28	-->	Nodo30
 Nodo30	-->	Nodo0	-->	Nodo2
@@ -423,6 +419,7 @@ Nodo17	-->	Nodo19	-->	Nodo20
 Nodo13	-->	Nodo14	-->	Nodo16
 Nodo11	-->	Nodo13	-->	Nodo14
 Nodo16	-->	Nodo17	-->	Nodo19
+***¡¡¡Se encontró en 10 la clave 10 buscada!!!***
 Nodo22	-->	Nodo23	-->	Nodo24
 Nodo23	-->	Nodo24	-->	Nodo25
 Nodo24	-->	Nodo25	-->	Nodo26
@@ -763,7 +760,6 @@ Nodo19	-->	Nodo24	-->	Nodo25
 Nodo12	-->	Nodo13	-->	Nodo14
 Nodo24	-->	Nodo25	-->	Nodo26
 Nodo26	-->	Nodo27	-->	Nodo30
-***¡¡¡Se encontró en 27 la clave 16 buscada!!!***
 Nodo13	-->	Nodo14	-->	Nodo16
 *null*	-->	Nodo30	-->	Nodo0
 Nodo25	-->	Nodo26	-->	Nodo27
